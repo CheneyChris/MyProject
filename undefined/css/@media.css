@@ -1,0 +1,125 @@
+/*
+* @Author: chenjian
+* @Date:   2018-04-24 09:28:35
+* @Last Modified by:   ChrisChen
+* @Last Modified time: 2018-04-27 21:10:57
+*/
+
+@media screen and (min-width:776px) {
+    .container {
+        width: 95%;
+        margin: 0 auto;
+    }
+}
+
+@media screen and (min-width:980px) {
+    .container {
+        width: 90%;
+        margin: 0 auto;
+    }
+}
+
+@media screen and (min-width:1200px) {
+    .container {
+        width: 80%;
+        margin: 0 auto;
+    }
+}
+
+@media screen and (max-width:1020px) {
+    .footer_list h4 {
+        font-size: 25px;
+    }
+    .img_info {
+        display: none;
+    }
+}
+
+@media screen and (max-width:930px) {
+    .search input:focus {
+        width: 40px
+    }
+    .footer_main {
+        justify-content: space-around
+    }
+    .footer_main .footer_list {
+        flex-basis: 40% !important;
+    }
+    .map_left {
+        padding-right: 0px;
+        border-right: none
+    }
+}
+
+@media screen and (max-width:840px) {
+    .logo {
+        margin-right: 2% !important;
+    }
+    nav ul li a {
+        padding: 37px 15px;
+    }
+}
+
+@media screen and (max-width:720px) {
+    .footer_main {
+        justify-content: space-around
+    }
+    .footer_main .footer_list {
+        flex-basis: 80% !important;
+    }
+}
+
+@media screen and (max-width:680px) {
+    .logo {
+        margin: 0 auto;
+    }
+    nav ul {
+        margin-top: -100%;
+        width: 100%;
+    }
+    nav {
+        float: none;
+    }
+    nav ul li {
+        width: 100%;
+        overflow: hidden;
+    }
+    nav ul li a {
+        width: 100%;
+        text-align: center;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    nav .nav_btn {
+        display: block;
+    }
+    .search {
+        position: absolute;
+        left: 55%;
+        transform: translateX(-50%)
+    }
+    .desc_main ul {
+        justify-content: space-around;
+    }
+    .desc_main ul li {
+        flex-basis: 40%;
+        margin-top: 20px;
+    }
+    .offer .text_list {
+        justify-content: space-around;
+    }
+    .offer .text_list li {
+        flex-basis: 40%
+    }
+    .photo_main ul {
+        justify-content: space-around;
+    }
+    .photo_main ul li {
+        flex-basis: 28%;
+    }
+
+    .map_left,
+    .map_right {
+        flex-basis: 80%;
+    }
+}
