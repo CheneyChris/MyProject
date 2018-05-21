@@ -1,0 +1,190 @@
+/*
+* @Author: chenjian
+* @Date:   2018-04-27 10:34:36
+* @Last Modified by:   ChrisChen
+* @Last Modified time: 2018-04-27 22:07:05
+*/
+body {
+	background: #f4f4f4
+}
+.reading {
+	width: 100%;
+	padding-bottom:60px;
+}
+.reading_main {
+	padding: 15px;
+}
+.reading h1 {
+	line-height: 35px;
+	padding-top: 35px;
+	padding-bottom: 25px;
+	font-size: 40px;
+	color: #2190c1;
+	text-align: center;
+}
+
+.map {
+	padding-top: 30px;
+	padding-bottom: 70px;
+	width: 100%;
+}
+.map_main {
+	display: flex;
+	justify-content: space-around;
+	flex-wrap: wrap;
+}
+.map_left,
+.map_right {
+	flex-basis: 40%;
+	/* border: 1px solid #000; */
+}
+.reading .map_text {
+	line-height: 21px;
+	color: #515862;
+	font-size: 13px;
+	text-align: left
+}
+.map_left .map_text {
+	color: #515862;
+	font-size: 13px;
+	text-align: left;
+	margin-bottom: 28px;
+}
+
+.form span{
+	display: block;
+	color: #515862;
+	font-size: 13px;
+	margin-bottom: 9px;
+}
+.form span::after {
+	content: "*";
+	margin-left: 5px;
+	display: inline-block;
+	color: #f00;
+}
+.form input {
+	outline: none;
+	height: 30px;
+	width: 100%;
+	padding-left: 10px;
+	box-sizing: border-box;
+	border: 1px solid #dcdee0;
+	margin-bottom: 30px;
+}
+.form input:focus {
+	border: 1px solid #ffd2d2;
+}
+.form textarea {
+	height: 200px;
+	width: 100%;
+	box-sizing: border-box;
+	outline: none;
+	padding: 10px;
+}
+.code {
+	/* border: 1px solid #ccc; */
+	margin-top: 28px;
+}
+.code::after {
+	content: "";
+	display: block;
+	clear: both;
+}
+.code_img {
+	float: left;
+	margin-right:15px;
+	cursor: pointer;
+}
+.code input {
+	float: left;
+	width: 45%;
+	outline: none;
+}
+.code p {
+	float: left;
+	margin-bottom: 9px;
+	color: #515862;
+	font-size: 13px;
+}
+.code a {
+	float: right;
+	padding: 6px 14px;
+	background: #2190c1;
+	font-size: 16px;
+	color: #fff;
+	margin-top: 18px;
+	border-radius: 5px;
+}
+
+.map_left {
+	padding-right: 80px;
+	border-right: 2px solid #e1e1e1;
+}
+.contact ul li img {
+	float: left;
+	margin-top: 6px;
+	margin-right: 20px;
+	margin-left: 6px;
+}
+.contact ul {
+	background: url("../images/contact_bg.png") repeat-y
+}
+.contact ul li {
+	/* border: 1px solid #ccc; */
+	margin-bottom: 18px;
+}
+.contact ul li p {
+	font-size: 13px;
+	color: #7b7972;
+}
+.contact ul li p span {
+	color: #0988b9;
+}
+.contact ul li a {
+	font-size: 13px;
+	display: block;
+	color: #0988b9;
+	text-decoration:underline;
+}
+
+.map_box {
+	margin-top: 36px;
+}
+.map_box h1 {
+	margin-top: 45px;
+	color: #515862;
+	font-size:20px;
+	margin-bottom: 27px;
+}
+.map_box ul li {
+	float: left;
+	margin-right: 8px;
+}
+.map_box ul li:hover {
+	filter: opacity(0.8);
+	cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,95 @@
+/*
+* @Author: chenjian
+* @Date:   2018-05-15 09:20:41
+* @Last Modified by:   chenjian
+* @Last Modified time: 2018-05-15 17:35:20
+*/
+body {
+  padding-bottom: 120px; }
+
+.class_header {
+  width: 100%;
+  padding-top: 48px;
+  padding-bottom: 20px;
+  position: relative; }
+  .class_header::after {
+    clear: both;
+    content: "";
+    display: block; }
+  .class_header .back {
+    font-size: 26px;
+    height: 60px;
+    width: 120px;
+    box-sizing: border-box;
+    border-radius: 15px;
+    border: 3px solid #ff9344;
+    text-align: center;
+    margin-left: 23px;
+    line-height: 60px;
+    float: left; }
+  .class_header .footer_title {
+    position: absolute;
+    top: 65px;
+    left: 50%;
+    transform: translateX(-50%); }
+    .class_header .footer_title p {
+      font-size: 26px;
+      color: #000; }
+  .class_header .select {
+    float: right;
+    margin-right: 21px; }
+    .class_header .select p {
+      font-size: 26px;
+      border: 3px solid #ff9344;
+      margin-left: 44px;
+      padding: 14px 66px 14px 14px;
+      color: #000;
+      box-sizing: border-box;
+      position: relative; }
+      .class_header .select p::after {
+        border: 16px solid transparent;
+        border-top: 16px solid #ff9344;
+        display: block;
+        content: "";
+        height: 0px;
+        width: 0px;
+        position: absolute;
+        right: 15px;
+        top: 27px; }
+    .class_header .select ul {
+      position: absolute;
+      z-index: 9;
+      display: none; }
+      .class_header .select ul li {
+        font-size: 26px;
+        border: 3px solid #ff9344;
+        text-align: center;
+        margin-left: 44px;
+        background: #fff;
+        padding: 14px 66px 14px 14px;
+        color: #000; }
+
+footer {
+  width: 100%;
+  background: #fff;
+  padding-top: 10px;
+  height: 120px;
+  position: fixed;
+  bottom: 0px; }
+  footer ul {
+    display: flex;
+    justify-content: space-between; }
+    footer ul li {
+      position: relative;
+      flex-basis: 25%; }
+      footer ul li .before, footer ul li .after {
+        display: block;
+        position: absolute;
+        left: 55px; }
+      footer ul li .after {
+        display: none; }
+      footer ul li p {
+        font-size: 26px;
+        color: #000;
+        text-align: center;
+        margin-top: 85px; }

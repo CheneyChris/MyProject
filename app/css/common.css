@@ -1,0 +1,63 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+
+.clear {
+	clear: both
+}
+ul, li ,ol {
+	list-style: none;
+}
+img {
+	border: none;
+}
+body {
+	margin-bottom: 85px;
+}
+.menu {
+	width: 100%;
+	background: #695f56;
+	/* height: 98px; */
+	position: fixed;
+	bottom: 0px;
+	/* top: 1030px; */
+	right: 0px;
+}
+.menu input {
+	display: none;
+}
+.menu input[id="menu_btn1"]:checked ~ ul li label[class="menu_btn1"]{
+	background: #f17e56;
+}
+.menu input[id="menu_btn2"]:checked ~ ul li label[class="menu_btn2"]{
+	background: #f17e56;
+}
+.menu input[id="menu_btn3"]:checked ~ ul li label[class="menu_btn3"]{
+	background: #f17e56;
+}
+.menu input[id="menu_btn4"]:checked ~ ul li label[class="menu_btn4"]{
+	background: #f17e56;
+}
+.menu input[id="menu_btn5"]:checked ~ ul li label[class="menu_btn5"]{
+	background: #f17e56;
+}
+
+.menu ul {
+	display: flex;
+	justify-content: space-between;
+}
+.menu ul li label {
+	display: inline-block;
+}
+.menu ul li label a {
+	display: block;
+}
+.menu ul li {
+	flex-basis: 20%;
+}
+.menu ul li img {
+	/* height: 44px; */
+	/* width: 44px; */
+	margin: 28px 42px;
+}
