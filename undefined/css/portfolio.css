@@ -1,0 +1,205 @@
+/*
+* @Author: chenjian
+* @Date:   2018-04-25 12:43:29
+* @Last Modified by:   chenjian
+* @Last Modified time: 2018-04-27 10:33:18
+*/
+
+.pf_text {
+	width: 100%;
+}
+
+.top_title h1{
+	text-align: center;
+	line-height: 82px;
+	padding-top: 30px;
+	padding-bottom: 20px;
+	color: #2190c1;
+	font-size: 50px;
+	text-transform: uppercase;
+}
+.pf_text span,
+.pf_text p {
+	line-height: 20.54px;
+	font-size: 13px;
+	text-align: center;
+	color: #515862;
+	display: block;
+	margin-bottom: 30px;
+}
+
+.bottom_title h1 {
+	margin-bottom: 32px;
+	text-align: center;
+	font-size: 65px;
+	line-height: 82px;
+	word-spacing: 10px;
+	text-transform: uppercase;
+	color: #515862;
+}
+.pf_next {
+	width: 100%;
+	border-top: 1px solid #ccc;
+	border-bottom: 5px solid #a5a5a5;
+}
+.pf_list {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+.pf_list li {
+	padding: 30px 15px;
+	flex-basis: 25%;
+	box-sizing: border-box;
+	text-align: center;
+	border-left: 1px solid #ccc;
+}
+.pf_list li:last-child {
+	border-right: 1px solid #ccc;
+}
+.pf_list li p {
+	color: #515862;
+	font-size: 13px;
+}
+.pf_list li h3 {
+	color: #2190c1;
+	margin: 15px 0px;
+	font-size: 20px;
+}
+.pf_list li img {
+	display: block;
+	margin: 0 auto;
+}
+
+.team {
+	width: 100%;
+}
+.team_title h1 {
+	color: #2190c1;
+	padding-top: 50px;
+	padding-bottom: 41px;
+	text-align: center;
+	font-size: 50px;
+}
+
+.team_list {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+}
+.team_list li {
+	flex-basis: 35%;
+	border: 1px solid #ccc;
+	/* border: 11px solid #d3d3d3; */
+	margin-bottom: 45px;
+	padding: 14px 13px;
+}
+.team_list li:nth-child(2n+1){
+	box-shadow: -11px -11px 0px 0px #d3d3d3;
+}
+.team_list li:nth-child(2n){
+	box-shadow: 11px -11px 0px 0px #d3d3d3;
+}
+.info_pic img {
+	display: block;
+	width: 100%;
+}
+.info_pic {
+	background: #b5b5b5;
+	float: left;
+	/* margin-right: 35px; */
+	margin-bottom: 20px;
+}
+.list_info::after{
+	content: "";
+	display: block;
+	clear: both;
+}
+.list_info h5 {
+	padding-top: 10px;
+	text-align: center;
+	color: #666;
+	font-size: 17.35px;
+}
+.list_info h4 {
+	line-height: 30px;
+	text-transform: uppercase;
+	text-align: center;
+	color: #2190c1;
+	font-size: 20px;
+}
+.list_info a {
+	color: #94979b;
+	font-size: 13px;
+	margin-bottom: 16px;
+	display: block;
+	text-align: center;
+}
+.team_list p {
+	color: #515862;
+	font-size: 12px;
+}
+.team_main input[id^="color"] {
+	display: none;
+}
+#color1:checked ~ .list_info .info_pic {
+	background: #00a1e4
+}
+#color2:checked ~ .list_info .info_pic {
+	background: #29aecb
+}
+#color3:checked ~ .list_info .info_pic {
+	background: #0481d9
+}
+#color4:checked ~ .list_info .info_pic {
+	background: #f7941d
+}
+.color {
+	float: left;
+	margin-left: 50px;
+}
+.color label {
+	height: 24px;
+	width: 24px;
+	border-radius: 5px;
+	margin-left: 5px;
+	cursor: pointer;
+}
+.color .color1 {
+	background: #00a1e4
+}
+.color .color2 {
+	background: #29aecb
+}
+.color .color3 {
+	background: #0481d9
+}
+.color .color4 {
+	background: #f7941d
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
