@@ -1,0 +1,223 @@
+.banner {
+    width: 100%;
+    padding-top:53px;
+}
+
+.banner_box {
+    width: 100%;
+}
+
+.banner_box img {
+    height: 100%;
+    width: 100%;
+    border: none;
+}
+
+
+
+/* banner end */
+
+.intro {
+    width: 100%;
+    color: #2a2a2a;
+    font-family: YaHei;
+    padding-bottom: 60px;
+    padding-top: 85px;
+}
+
+.intro_box {
+    width: 75%;
+    margin: 0 auto;
+    background: url('../images/about_one.png') no-repeat 100% 100%;
+    background-size: 33%;
+}
+
+.intro_text {
+    width: 65%;
+}
+
+.intro_text h1 {
+    font-size: 32px;
+    padding-bottom: 32px;
+}
+
+.intro_text h3 {
+    font-size: 18.67px;
+    margin-bottom: 28px;
+}
+
+.intro_text p {
+    font-size: 12.45px;
+    text-indent: 2em;
+    margin-bottom: 20px;
+}
+
+
+
+/* intro end */
+
+.recruit {
+    width: 100%;
+    background: #8cc11f;
+    font-family: YaHei;
+    padding-top: 102px;
+    padding-bottom: 98px;
+    float: left;
+}
+
+.recruit_box {
+    width: 75%;
+    margin: 0 auto;
+}
+
+.recruit_text_left {
+    width: 65%;
+    float: left;
+}
+
+.recruit_title h1 {
+    font-size: 32px;
+    padding-bottom: 54px;
+    color: #fff;
+}
+
+.recruit_text_left p {
+    font-size: 14.22px;
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+.recruit_text_left span {
+    font-size: 14.22px;
+    color: #fff;
+}
+
+.recruit_text_right {
+    float: right;
+}
+
+.recruit_text_right p {
+    font-size: 14.22px;
+    color: #fff;
+    margin-bottom: 16px;
+}
+
+.recruit_text_right .email {
+    height: 42px;
+    width: 195px;
+    box-sizing: border-box;
+    font-size: 21.34px;
+    font-family: YaHei;
+    line-height: 42px;
+    border-radius: 5px;
+    background: #fff;
+    text-align: center;
+    color: #8cc11f;
+    margin-bottom: 12px;
+}
+
+.recruit_text_right span {
+    font-size: 14.22px;
+    color: #fff;
+}
+
+
+/* recruit end */
+
+.develop {
+    float: left;
+    width: 100%;
+    font-family: YaHei;
+}
+
+.develop_box .develop_one:first-child {
+    padding-top: 110px;
+}
+
+.develop_box .develop_one:last-child {
+    border: none;
+}
+
+.develop_one {
+    padding-bottom: 60px;
+    padding-top: 60px;
+    border-bottom: 1px solid #d2d2d2;
+}
+
+.develop_box {
+    width: 75%;
+    margin: 0 auto;
+}
+
+.develop_one_title h1 {
+    font-size: 23px;
+    color: #8cc11f;
+    margin-bottom: 36px;
+}
+
+.develop_one_descript {
+    color: #2a2a2a;
+}
+
+.develop_one_descript h4,
+.develop_one_require h4 {
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.develop_one_descript li,
+.develop_one_require li {
+    font-size: 12.45px;
+    padding-left: 20px;
+    margin-bottom: 20px;
+}
+
+
+/* develop end */
+
+.contact {
+    width: 100%;
+    font-family: YaHei;
+    background: #f4f4f4;
+    padding-bottom: 54px;
+    float: left;
+}
+
+.contact_box {
+    width: 75%;
+    margin: 0 auto;
+}
+
+.contact_title h1 {
+    font-size: 32px;
+    color: #2a2a2a;
+    padding: 38px 0;
+}
+
+.contact_list ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between
+}
+
+.contact_list ul li {
+    flex-basis: 48%;
+    font-size: 14.19px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    background: #fff;
+    padding: 11px 9px 18px 18px;
+    box-sizing: border-box;
+}
+
+.contact_list ul li p {
+    margin-top: 22px;
+    text-indent: 9px;
+}
+
+.contact_list ul li img {
+    float: left;
+}
+
+
+/* E N D */

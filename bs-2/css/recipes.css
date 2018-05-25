@@ -1,0 +1,35 @@
+/*
+* @Author: chenjian
+* @Date:   2018-05-24 18:46:48
+* @Last Modified by:   chenjian
+* @Last Modified time: 2018-05-24 19:12:56
+*/
+body {
+  background: url("../images/bgimg-more.png") no-repeat;
+  background-size: cover; }
+
+.main {
+  width: 100%; }
+  .main .recipes_logo {
+    width: 280px;
+    margin: 150px auto 190px; }
+  .main .recipes_text {
+    color: #fff;
+    text-align: center; }
+    .main .recipes_text p {
+      font-size: 36px !important; }
+    .main .recipes_text h1 {
+      font-size: 100px !important; }
+    .main .recipes_text .start {
+      margin: 35px auto;
+      height: 70px;
+      width: 280px;
+      box-sizing: border-box;
+      border: 3px solid #fff;
+      border-radius: 3px; }
+      .main .recipes_text .start a {
+        line-height: 70px;
+        font-size: 18px;
+        color: #fff; }
+    .main .recipes_text span {
+      font-size: 14px; }

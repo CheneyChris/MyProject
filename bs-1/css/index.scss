@@ -1,0 +1,168 @@
+/*
+* @Author: chenjian
+* @Date:   2018-05-22 09:26:03
+* @Last Modified by:   chenjian
+* @Last Modified time: 2018-05-22 11:57:06
+*/
+
+.descript {
+	background:#f4f4f4;
+	padding:30px 0;
+	.col-md-3 {
+		padding:0 30px;
+		img {
+			margin:0 auto;
+			padding-bottom:20px;
+		}
+		p{
+			text-align:center;
+			color:#515862;
+			font-size:11px;
+		}
+		h4 {
+			text-align: center;
+			color:#515862;
+			font-size:17px;
+		}
+	}
+}
+
+.photo {
+	background:#2e3e4f;
+	padding-bottom:55px;
+	.photo_title{
+		padding-top:55px;
+		padding-bottom:64px;
+		h4 {
+			color:#f98561;
+			font-size:30px;
+		}
+		a {
+			margin-top:15px;
+		}
+	}
+	ul {
+		li {
+			img {
+
+			}
+			h5 {
+				color:#f98561;
+				font-size:17px;
+			}
+			p {
+				font-size:11px;	
+				color:#bcbcbc;
+			}
+		}
+	}
+}
+
+.offer {
+	.offer_title{
+		padding:0 80px;
+		
+		h1 {
+			text-align:center;
+			color:#2190c1;
+			font-size:40px;
+			padding-top:35px;
+			padding-bottom:20px;
+		}
+		p{
+			text-align: center;
+			color:#515862;
+			font-size:12px;
+			padding-bottom:25px;
+		}
+	}
+	.test_list {
+
+		li {
+			h4 {
+				text-align:center;
+			}
+			p{
+				color:#515862;
+				font-size:11px;	
+				text-align:center;
+			}
+		}
+	}
+	.offer_next {
+		.next_title{
+			padding:0 80px;
+			h1 {
+				text-align:center;
+				color:#2190c1;
+				font-size:27px;
+				padding:35px 0px;
+			}
+			p {
+				color:#515862;
+				font-size:25px;
+				text-align:center;
+				margin-bottom:50px;
+			}
+		}
+		.next_icon {
+			h5 {
+				text-align: center;
+				color:#f98561;
+				font-size:14px;
+				margin-bottom:30px;
+			}
+			input[type="radio"] {
+				display: none;
+			}
+			#icon_btn1:checked ~ ul li .icon_btn1 {
+				-webkit-filter: grayscale(0);
+			}
+			#icon_btn2:checked ~ ul li .icon_btn2 {
+				-webkit-filter: grayscale(0);
+			}
+			#icon_btn3:checked ~ ul li .icon_btn3 {
+				-webkit-filter: grayscale(0);
+			}
+			.icon_list {
+				display: flex;
+				justify-content: center;
+				li {
+
+					margin-left:5px;
+					label {
+						-webkit-filter: grayscale(100%);
+						p {
+							text-align: center;
+							margin-top:20px;
+							background:#f88560;
+							height:25px;
+							width:70px;
+							line-height:20px;
+						}
+					}
+
+				}
+			}
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

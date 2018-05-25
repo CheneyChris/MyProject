@@ -1,0 +1,108 @@
+/*
+* @Author: chenjian
+* @Date:   2018-05-04 23:56:12
+* @Last Modified by:   ChrisChen
+* @Last Modified time: 2018-05-07 10:55:29
+*/
+body {
+  background: linear-gradient(to left bottom, #d05728, #e68965, #d8314b);
+  overflow: hidden; }
+
+.login {
+  padding-top: 120px;
+  padding-bottom: 600px; }
+  .login .login_main {
+    width: 100%; }
+    .login .login_main .login_title {
+      text-align: center; }
+      .login .login_main .login_title h1 {
+        font-size: 70px;
+        color: #fff;
+        margin-bottom: 10px; }
+      .login .login_main .login_title p {
+        font-size: 40px;
+        color: #ffbf25; }
+    .login .login_main .login_import {
+      padding-top: 70px; }
+      .login .login_main .login_import input {
+        width: 560px;
+        height: 80px;
+        text-indent: 26px;
+        display: block;
+        margin: 0 auto;
+        line-height: 80px;
+        background: transparent;
+        margin-bottom: 24px;
+        border: none;
+        border-bottom: 1px solid #fff;
+        font-size: 26px; }
+      .login .login_main .login_import input::placeholder {
+        font-size: 26px;
+        color: #fff; }
+      .login .login_main .login_import button {
+        display: block;
+        margin: 0 auto;
+        border: none;
+        width: 560px;
+        height: 80px;
+        text-align: center;
+        background: #ffbf25; }
+        .login .login_main .login_import button a {
+          font-size: 26.13px;
+          color: #fff; }
+      .login .login_main .login_import p {
+        color: #fff;
+        font-size: 26px;
+        margin-top: 65px;
+        text-align: center; }
+  .login footer {
+    margin-top: 140px; }
+    .login footer p {
+      font-size: 26px;
+      color: #fff;
+      text-align: center;
+      margin-bottom: 55px;
+      position: relative; }
+      .login footer p::after {
+        content: "";
+        display: block;
+        width: 50px;
+        background: #fff;
+        height: 1px;
+        position: absolute;
+        top: 11px;
+        left: 140px; }
+      .login footer p::before {
+        content: "";
+        display: block;
+        width: 50px;
+        background: #fff;
+        height: 1px;
+        position: absolute;
+        top: 11px;
+        right: 140px; }
+    .login footer ul {
+      width: 560px;
+      margin: 0 auto; }
+      .login footer ul::after {
+        clear: both;
+        display: block;
+        content: ""; }
+      .login footer ul li {
+        height: 80px;
+        width: 280px;
+        float: left; }
+        .login footer ul li a {
+          color: #fff;
+          font-size: 24px;
+          line-height: 80px;
+          text-indent: 125px;
+          display: block; }
+      .login footer ul li:first-child {
+        background-color: #3b5998; }
+        .login footer ul li:first-child a {
+          background: url("../images/login_footer_1.png") no-repeat 55px center; }
+      .login footer ul li:last-child {
+        background: #00acee; }
+        .login footer ul li:last-child a {
+          background: url("../images/login_footer_2.png") no-repeat 55px center; }

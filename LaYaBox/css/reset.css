@@ -1,0 +1,48 @@
+/*
+* @Author: chenjian
+* @Date:   2018-04-13 20:41:54
+* @Last Modified by:   chenjian
+* @Last Modified time: 2018-04-17 17:54:05
+*/
+
+*{
+	padding: 0;
+	margin: 0;
+}
+.clear {
+	clear: both;
+}
+ul,ol {
+	list-style: none;
+}
+
+input {
+	outline: none;
+}
+
+
+img {
+	border: none;
+}
+
+.container {
+	margin: 0 auto;
+}
+span {
+	display: inline-block;
+}
+a {
+	color: #000;
+	text-decoration: none;
+	display: inline-block;
+
+}
+
+@font-face {
+	font-family: YaHei;
+	src: url('../font/MicrosoftYaHei.ttf');
+}
+@font-face {
+	font-family: YaHeiBold;
+	src: url('../font/MicrosoftYaHeiBold..ttf');
+}

@@ -1,13 +1,14 @@
 /*
 * @Author: chenjian
 * @Date:   2018-04-24 09:27:22
-* @Last Modified by:   ChrisChen
-* @Last Modified time: 2018-05-22 19:39:07
+* @Last Modified by:   chenjian
+* @Last Modified time: 2018-05-22 22:10:17
 */
 
 header {
 	width: 100%;
 	position: relative;
+	background: #f4f4f4;
 }
 header .container::after {
 	display: block;
@@ -85,6 +86,7 @@ nav .nav_btn:hover span{
     outline: none;
     border: 1px solid #eee;
     border-radius: 40px;
+    box-sizing: content-box;
     background-color: #eee;
     transition: width 0.3s ease-in-out;
 }
@@ -173,7 +175,64 @@ nav .nav_btn:hover span{
 	float: left;
 	margin-left: 10px;
 }
-
+.offer .offer_title {
+  padding: 0 80px; }
+  .offer .offer_title h1 {
+    text-align: center;
+    color: #2190c1;
+    font-size: 40px;
+    padding-top: 35px;
+    padding-bottom: 20px; }
+  .offer .offer_title p {
+    text-align: center;
+    color: #515862;
+    font-size: 12px;
+    padding-bottom: 25px; }
+.offer .test_list li h4 {
+  text-align: center; }
+.offer .test_list li p {
+  color: #515862;
+  font-size: 11px;
+  text-align: center; }
+.offer .offer_next .next_title {
+  padding: 0 80px; }
+  .offer .offer_next .next_title h1 {
+    text-align: center;
+    color: #2190c1;
+    font-size: 27px;
+    padding: 35px 0px; }
+  .offer .offer_next .next_title p {
+    color: #515862;
+    font-size: 25px;
+    text-align: center;
+    margin-bottom: 50px; }
+.offer .offer_next .next_icon h5 {
+  text-align: center;
+  color: #f98561;
+  font-size: 14px;
+  margin-bottom: 30px; }
+.offer .offer_next .next_icon input[type="radio"] {
+  display: none; }
+.offer .offer_next .next_icon #icon_btn1:checked ~ ul li .icon_btn1 {
+  -webkit-filter: grayscale(0); }
+.offer .offer_next .next_icon #icon_btn2:checked ~ ul li .icon_btn2 {
+  -webkit-filter: grayscale(0); }
+.offer .offer_next .next_icon #icon_btn3:checked ~ ul li .icon_btn3 {
+  -webkit-filter: grayscale(0); }
+.offer .offer_next .next_icon .icon_list {
+  display: flex;
+  justify-content: center; }
+  .offer .offer_next .next_icon .icon_list li {
+    margin-left: 5px; }
+    .offer .offer_next .next_icon .icon_list li label {
+      -webkit-filter: grayscale(100%); }
+      .offer .offer_next .next_icon .icon_list li label p {
+        text-align: center;
+        margin-top: 20px;
+        background: #f88560;
+        height: 25px;
+        width: 70px;
+        line-height: 20px; }
 /* footer */
 
 footer {

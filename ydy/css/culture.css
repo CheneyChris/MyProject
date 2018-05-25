@@ -1,0 +1,189 @@
+body {
+	background: #f4f4f4
+}
+.culture {
+	width: 100%;
+	margin-top: 21px;
+	font-family: YaHei;
+}
+.culture_main {
+	background: #fff;
+	border: 1px solid #ddd;
+	padding-top: 16px;
+	padding-left: 22px;
+	display: flex;
+	flex-wrap: wrap;
+}
+.culture_title h1 {
+	color: #555555;
+	font-size: 32.22px;
+	padding: 22px 0;
+	width: 68%;
+}
+.culture_title p {
+	padding-bottom: 10px;
+	font-size: 12.89px;
+	border-bottom: 2px solid #ddd;
+	width: 68%;
+}
+.culture_title {
+	flex-basis: 100%;
+	width: 100%;
+}
+.culture_main .cat {
+	flex-basis: 65%;
+}
+.culture_main .aside {
+	flex-basis: 35%;
+}
+.culture_main .cat li {
+	padding-top: 21px;
+	padding-bottom: 21px;
+	display: flex;
+	border-top: 2px solid #ddd;
+	position: relative
+}
+.cul_img {
+	flex-basis: 35%;
+	margin-right: 18px;	
+}
+.cul_img a {
+	position: absolute;
+	font-size: 12.89px;
+	color: #fff;
+	padding: 5px 10px;
+	top: 30px;
+	left: 0px;
+	background: #ff9000
+
+}
+.cul_text {
+	flex-basis: 65%;
+}
+.cul_text h4 {
+	font-size: 17.72px;
+	color: #555555;
+}
+.less_text {
+	font-size: 9.67px;
+	color: #999999;
+	padding-top: 15px;
+	padding-bottom: 11px;
+}
+.normal_text {
+	font-size: 11.28px;
+	color: #555555;
+}
+.cul_text a {
+	margin-top: 40px;
+	margin-right: 20px;
+	float: right;
+	transition: all 0.3s linear;
+}
+.cul_text a:hover {
+	background: #ff9000;
+	color: #fff;
+	border: 1px solid #ff9000;
+}
+
+.aside_title {
+	font-size: 17.22px;
+	color: #555555;
+	margin-top: -30px;
+	text-align: center;
+	margin-left: 30px;
+	padding-bottom: 6px;
+	width: 80%;
+	border-bottom: 2px solid #ddd;
+}
+
+
+.aside_list {
+	margin-top: 18px;
+}
+.aside_list li {
+	margin: 28px;
+	margin-left: 40px;
+	font-size: 11.28px;
+	cursor: pointer;
+	color: #555555;
+}
+.aside_list li:hover {
+	color: #ff9000;
+}
+.aside_select li::after{
+	clear: both;
+	content: "";
+	display: block;
+}
+.aside_select {
+	margin-left: 40px;
+	position: relative
+}
+.clickbtn::after {
+	content: "";
+	clear: both;
+	display: block;
+}
+.clickbtn label {
+	font-size: 12.89px;
+	color: #555555;
+	padding: 5px 25px;
+	display: block;
+	float: left;
+	border-bottom: 2px solid #e6e6e6;
+	overflow: hidden;
+}
+input[id="click1"]:checked ~ .clickbtn label[class="click1"] {
+	border: 2px solid #e6e6e6;
+	border-bottom: 2px solid transparent;
+}
+input[id="click2"]:checked ~ .clickbtn label[class="click2"] {
+	border: 2px solid #e6e6e6;
+	border-bottom: 2px solid transparent;
+}
+input[id="click1"]:checked ~ .one_list {
+	display: block;
+}
+input[id="click2"]:checked ~ .two_list {
+	display: block;
+}
+.common_list {
+	padding-top: 21px;
+}
+.common_list li {
+	margin-bottom: 16px;
+}
+.common_list li img {
+	float: left;
+	margin-right: 10px;
+}
+.common_list li h4 {
+	cursor: pointer;
+	font-size: 11.28px;
+	color: #555555;
+}
+.aside_select input {
+	display: none;
+}
+.one_list, .two_list {
+	display: none;
+}
+
+.evaluate {
+	width: 100%;
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

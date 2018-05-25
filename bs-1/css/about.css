@@ -1,0 +1,133 @@
+/*
+* @Author: chenjian
+* @Date:   2018-05-22 11:59:25
+* @Last Modified by:   chenjian
+* @Last Modified time: 2018-05-22 22:09:52
+*/
+body {
+  background: #f4f4f4; }
+
+.about_title h1 {
+  padding-top: 30px;
+  padding-bottom: 20px;
+  text-align: center;
+  color: #2190c1;
+  font-size: 50px; }
+
+.about_nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 36px; }
+
+.about_nav li {
+  float: left;
+  padding: 0 15px;
+  height: 25px;
+  margin: 10px 0px;
+  line-height: 25px;
+  border-right: 1px solid #ccc;
+  color: #515862;
+  font-size: 16px;
+  cursor: pointer; }
+
+.about_nav li:hover {
+  color: #2190c1; }
+
+.about_nav li:last-child {
+  border: none; }
+
+.about_nav li:last-child div {
+  float: left;
+  margin-left: 15px;
+  cursor: pointer; }
+
+.about_nav li:hover {
+  color: #2190c1; }
+
+.about_nav li:last-child {
+  border: none; }
+
+.about_nav li:last-child div {
+  float: left;
+  margin-left: 15px;
+  cursor: pointer; }
+
+.about_list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap; }
+
+.about_list li {
+  flex-basis: 28%;
+  border: 12px solid #fff;
+  box-sizing: border-box;
+  margin-right: 15px;
+  margin-bottom: 20px;
+  position: relative;
+  overflow: hidden; }
+
+.about_list li img {
+  width: 100%; }
+
+.about_list li:hover .img_info {
+  bottom: 0; }
+
+.about_list li:hover .about_img {
+  filter: blur(2px); }
+
+.img_info {
+  background: #aaaaaa;
+  width: 90%;
+  box-sizing: border-box;
+  padding: 29px 40px 41px 23px;
+  position: absolute;
+  bottom: -300px;
+  transition: all 0.3s ease-in-out; }
+
+.img_info h3 {
+  margin-bottom: 20px;
+  color: #f0f0f0;
+  font-size: 18px;
+  text-align: center; }
+
+.img_info p {
+  color: #f0f0f0;
+  font-size: 11px;
+  text-align: center; }
+
+.img_info a {
+  border: 1px solid #ffffff;
+  padding: 6px 25px;
+  border-radius: 5px;
+  text-indent: 25px;
+  background: url("../images/img_info.png") no-repeat 5px center;
+  margin-top: 15px;
+  margin-left: 35px;
+  color: #fff;
+  font-size: 17px; }
+
+.clients {
+  width: 100%;
+  margin-top: 50px;
+  padding-bottom: 35px;
+  border-top: 1px solid #b2d5e4;
+  border-bottom: 2px solid #b2d5e4; }
+
+.clients_title {
+  font-size: 27px;
+  color: #2190c1;
+  text-align: center;
+  padding-top: 32px; }
+
+.clients_text {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 35px; }
+
+.clients_text li:nth-child(2),
+.clients_text li:nth-child(3),
+.clients_text li:nth-child(5),
+.clients_text li:nth-child(6) {
+  text-indent: 24px;
+  background: url("../images/clients_list.png") no-repeat left center; }

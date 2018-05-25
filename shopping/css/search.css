@@ -1,0 +1,82 @@
+/*
+* @Author: chenjian
+* @Date:   2018-05-05 19:00:59
+* @Last Modified by:   ChrisChen
+* @Last Modified time: 2018-05-07 10:48:43
+*/
+body {
+  padding-bottom: 128px; }
+
+.search .input {
+  padding-top: 24px; }
+  .search .input input {
+    width: 592px;
+    box-sizing: border-box;
+    height: 64px;
+    border-radius: 30px;
+    border: 1px solid #c6c6c6;
+    margin: 0 auto;
+    font-size: 26px;
+    display: block;
+    text-indent: 83px;
+    color: #6c6c6c;
+    background: url("../images/search.png") no-repeat 30px center; }
+    .search .input input::placeholder {
+      color: #6c6c6c; }
+.search .persona {
+  width: 592px;
+  margin: 0 auto; }
+  .search .persona ul li {
+    position: relative;
+    padding: 24px 0px;
+    border-bottom: 1px solid #b5b5b5; }
+    .search .persona ul li::after {
+      display: block;
+      clear: both;
+      content: ""; }
+    .search .persona ul li img {
+      float: left;
+      margin-right: 24px;
+      height: 112px;
+      width: 112px;
+      border-radius: 50%;
+      overflow: hidden; }
+    .search .persona ul li h4 {
+      color: #d05728;
+      font-size: 30px;
+      line-height: 36px;
+      margin-top: 20px; }
+    .search .persona ul li p {
+      color: #626262;
+      font-size: 20px;
+      margin-top: 5px; }
+    .search .persona ul li a {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 40px;
+      color: #b9b9b9; }
+
+footer {
+  width: 100%;
+  background: linear-gradient(to right, #d72f4a, #ed8e66);
+  height: 128px;
+  transition: all 0.3s ease-in-out;
+  position: fixed;
+  bottom: 0; }
+  footer ul {
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding: 44px 133px; }
+    footer ul li {
+      height: 44px;
+      width: 68px;
+      opacity: 0.7; }
+    footer ul li:nth-child(1) {
+      background: url("../images/footer_1.png") no-repeat center center; }
+    footer ul li:nth-child(2) {
+      background: url("../images/footer_2.png") no-repeat center center; }
+    footer ul li:nth-child(3) {
+      background: url("../images/footer_3.png") no-repeat center center; }

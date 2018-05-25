@@ -1,0 +1,16 @@
+* {
+    padding:0;
+    margin:0;
+}
+ul, ol ,li {
+    list-style:none
+}
+a,span,label {
+    display:inline-block;
+}
+a {
+    text-decoration: none;
+}
+input,button {
+    outline:none
+}

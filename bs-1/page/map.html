@@ -1,45 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <title>Document</title>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../js/jquery-3.2.1.js"></script>
+	<link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/reset.css">
     <link rel="stylesheet" type="text/css" href="../css/common.css">
     <link rel="stylesheet" type="text/css" href="../css/map.css">
-    <link rel="stylesheet" type="text/css" href="../css/reset.css">
     <link rel="stylesheet" type="text/css" href="../css/@media.css">
+    <script src="../js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../js/common.js"></script>
 </head>
-
 <body>
-    <header>
-        <div class="container">
-            <div class="logo">
-                <a href="../index.html"><img src="../images/logo-.png"></a>
-            </div>
-            <nav>
-                <input type="checkbox" name="" id="nav_btn">
-                <ul>
-                    <li><a href="../index.html">Home</a></li>
-                    <li><a href="portfolio.html">Portfolio</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="map.html">Contact</a></li>
-                    <li><a href="javascript:void">Blog</a></li>
-                </ul>
-                <label for="nav_btn" class="nav_btn">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </label>
-            </nav>
-            <div class="search">
-                <input type="text" name="" placeholder="搜索">
-                <a href="javascript:void"><img src="../images/search.png"></a>
-            </div>
+<header>
+    <div class="container">
+        <div class="logo">
+            <a href="../index.html"><img src="../images/logo-.png"></a>
         </div>
-    </header>
 
-    <div class="slide">
+        <nav>
+            <input type="checkbox" name="" id="nav_btn">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="./portfolio.html">Portfolio</a></li>
+                <li><a href="./about.html">About</a></li>
+                <li><a href="./map.html">Contact</a></li>
+                <li><a href="javascript:void(0)">Blog</a></li>
+            </ul>
+            <label for="nav_btn" class="nav_btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+        </nav>
+        <div class="search">
+            <input type="text" name="" placeholder="搜索">
+            <a href="javascript:void(0)"><img src="../images/search.png"></a>
+        </div>
+    </div>
+</header>
+<div class="slide">
         <div class="banner">
             <input type="radio" name="banner" id="banner_btn1" checked>
             <input type="radio" name="banner" id="banner_btn2">
@@ -61,22 +62,21 @@
                 <label for="banner_btn5" class="banner_btn5"></label>
             </div>
         </div>
-    </div>
+</div>
 
-    <div class="reading">
-        <div class="container">
-            <div class="reading_main">
-            	<h1>GET IN TOUCH</h1>
-            <p>Lorem ipsum dolor sit amet, dui ac bibendum fringilla, massa augue mattis enim, quis volutpat augue nisi vitae nibh. Proin nibh tortor, rutrum luctus euismod eu, rutrum eget nunc. Nam commodo tellus quis ante tempus quis auctor enim suscipit. Donec sit amet feugiat justo. Nulla vel nibh et erat consequat sollicitudin. Vivamus egestas erat ac arcu sagittis in tincidunt purus pharetra. Maecenas viverra suscipit arcu, ac adipiscing odio vehicula nec. Vestibulum non enim ac dui interdum tempus nam tortor odio. Sed lobortis, dui ac bibendum fringilla, massa augue mattis enim, quis volutpat augue nisi vitae nibh. Proin nibh tortor, rutrum luctus euismod eu, rutrum eget nunc. Nam commodo tellus quis ante tempus quis auctor enim suscipit. Donec sit amet feugiat justo. Nulla vel nibh et erat consequat sollicitudin. Vivamus egestas erat ac arcu sagittis in tincidunt purus pharetra. Maecenas viverra suscipit arcu, ac adipiscing odio vehicula nec. Vestibulum non enim ac dui interdum tempus. Nam tortor odio, eleifend gravida posuere vitae, luctus nec diam. </p>
-            </div>
+<div class="reading">
+    <div class="container">
+        <div class="reading_main col-md-12 col-sm-12 col-xs-12">
+        	<h1>GET IN TOUCH</h1>
+        <p>Lorem ipsum dolor sit amet, dui ac bibendum fringilla, massa augue mattis enim, quis volutpat augue nisi vitae nibh. Proin nibh tortor, rutrum luctus euismod eu, rutrum eget nunc. Nam commodo tellus quis ante tempus quis auctor enim suscipit. Donec sit amet feugiat justo. Nulla vel nibh et erat consequat sollicitudin. Vivamus egestas erat ac arcu sagittis in tincidunt purus pharetra. Maecenas viverra suscipit arcu, ac adipiscing odio vehicula nec. Vestibulum non enim ac dui interdum tempus nam tortor odio. Sed lobortis, dui ac bibendum fringilla, massa augue mattis enim, quis volutpat augue nisi vitae nibh. Proin nibh tortor, rutrum luctus euismod eu, rutrum eget nunc. Nam commodo tellus quis ante tempus quis auctor enim suscipit. Donec sit amet feugiat justo. Nulla vel nibh et erat consequat sollicitudin. Vivamus egestas erat ac arcu sagittis in tincidunt purus pharetra. Maecenas viverra suscipit arcu, ac adipiscing odio vehicula nec. Vestibulum non enim ac dui interdum tempus. Nam tortor odio, eleifend gravida posuere vitae, luctus nec diam. </p>
         </div>
     </div>
+</div>
 
-    <div class="map">
+<div class="map">
     	<div class="container">
     		<div class="map_main">
-
-    			<div class="map_left">
+    			<div class="map_left col-md-6 col-sm-6">
     				<p class="map_text">Lorem ipsum dolor sit amet, consectetur * sign amentu kurmanci.</p>
     				<form class="form">
     					<span>NAME</span>
@@ -98,7 +98,7 @@
     				</div>
     			</div>
 
-    			<div class="map_right">
+    			<div class="map_right col-md-6 col-xm-6">
     				<div class="contact">
     					<ul>
     						<li>
@@ -135,7 +135,7 @@
     	</div>
     </div>
 
-    <footer>
+<footer>
         <div class="container">
             <div class="footer_main">
                 <div class="footer_list footer_one">
@@ -143,17 +143,17 @@
                     <ul>
                         <li>
                             <p>Check out this great theme item</p>
-                            <a href="javascript:void">http://tadjalskfj.com</a>
+                            <a href="javascript:void(0)">http://tadjalskfj.com</a>
                             <span>2 weeks ago</span>
                         </li>
                         <li>
                             <p>Check out this great theme item</p>
-                            <a href="javascript:void">http://tadjalskfj.com</a>
+                            <a href="javascript:void(0)">http://tadjalskfj.com</a>
                             <span>2 weeks ago</span>
                         </li>
                         <li>
                             <p>Check out this great theme item</p>
-                            <a href="javascript:void">http://tadjalskfj.com</a>
+                            <a href="javascript:void(0)">http://tadjalskfj.com</a>
                             <span>2 weeks ago</span>
                         </li>
                     </ul>
@@ -163,7 +163,7 @@
                     <p>Lorem ipsum dolor sit amet, consectetur adip iscing elit. Ut ultricies sagittis magna a comm. Ut eget eros mauris, ut cursus urna.</p>
                     <span>Your Email Address</span>
                     <input type="text" name="email">
-                    <a href="javascript:void">Sign Up</a>
+                    <a href="javascript:void(0)">Sign Up</a>
                 </div>
                 <div class="footer_list footer_three">
                     <h4>Recent projects</h4>
@@ -171,19 +171,19 @@
                         <li>
                             <img src="../images/null.png">
                             <p>Sketchy Business Card</p>
-                            <a href="javascript:void">http://tadjalskfj.com</a>
+                            <a href="javascript:void(0)">http://tadjalskfj.com</a>
                             <span>2 weeks ago</span>
                         </li>
                         <li>
                             <img src="../images/null.png">
                             <p>Sketchy Business Card</p>
-                            <a href="javascript:void">http://tadjalskfj.com</a>
+                            <a href="javascript:void(0)">http://tadjalskfj.com</a>
                             <span>2 weeks ago</span>
                         </li>
                         <li>
                             <img src="../images/null.png">
                             <p>Sketchy Business Card</p>
-                            <a href="javascript:void">http://tadjalskfj.com</a>
+                            <a href="javascript:void(0)">http://tadjalskfj.com</a>
                             <span>2 weeks ago</span>
                         </li>
                     </ul>
@@ -207,7 +207,6 @@
                 </div>
             </div>
         </div>
-    </footer>
+</footer>
 </body>
-
 </html>

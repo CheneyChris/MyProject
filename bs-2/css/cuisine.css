@@ -1,0 +1,15 @@
+/*
+* @Author: chenjian
+* @Date:   2018-05-24 18:10:59
+* @Last Modified by:   chenjian
+* @Last Modified time: 2018-05-24 18:39:45
+*/
+.cuisine_list ul {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap; }
+  .cuisine_list ul li {
+    flex-basis: 50%;
+    box-sizing: border-box; }
+    .cuisine_list ul li img {
+      display: block; }

@@ -1,0 +1,30 @@
+/*
+* @Author: chenjian
+* @Date:   2018-05-04 13:13:10
+* @Last Modified by:   chenjian
+* @Last Modified time: 2018-05-05 21:06:31
+*/
+
+*{
+	padding: 0px;
+	margin: 0px;
+}
+ul, ol ,li {
+	list-style: none;
+}
+a,span,label {
+	display: inline-block;
+}
+input {
+	outline: none;
+}
+a {
+	text-decoration: none;
+}
+@font-face {
+	font-family:Sink;
+	src: url('../font/SinkinSans-300Light.ttf');
+}
+*{
+	font-family: Sink
+}

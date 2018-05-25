@@ -1,0 +1,61 @@
+/*
+* @Author: chenjian
+* @Date:   2018-05-24 11:25:47
+* @Last Modified by:   chenjian
+* @Last Modified time: 2018-05-24 18:28:08
+*/
+
+
+.benefits {
+	ul {
+		padding:0px 105px;
+		li {
+			padding-top:36px;
+			.circle {
+				width:126px;
+				height:126px;
+				border-radius:50%;
+				border:3px solid #000;
+				margin:0 auto;
+			}
+			h4 {
+				color:#000;
+				margin-top:24px;
+				font-size:21px;
+				display:block;
+				text-align:center;
+				position:relative;
+				margin-bottom:30px;
+				&::after {
+					content:"";
+					display:block;
+					height:2px;
+					width:104px;
+					background:#f57365;
+					position:absolute;
+					top:37px;
+					left:50%;
+					transform: translateX(-50%);
+				}
+			}
+			p {
+				color:#000;
+				font-size:18.85px;
+				text-align:center;
+			}
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
