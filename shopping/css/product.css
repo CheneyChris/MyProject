@@ -1,8 +1,8 @@
 /*
 * @Author: chenjian
 * @Date:   2018-05-05 01:47:47
-* @Last Modified by:   chenjian
-* @Last Modified time: 2018-05-05 21:32:16
+* @Last Modified by:   ChrisChen
+* @Last Modified time: 2018-05-27 17:15:50
 */
 .slide {
   width: 100%;
@@ -23,13 +23,10 @@
     transform: translateY(-50%); }
   .slide .slide_icon {
     width: 600%;
-    margin-left: -100%; }
-    .slide .slide_icon::after {
-      content: "";
-      display: block;
-      clear: both; }
+    margin-left: -100%;
+    display: flex; }
     .slide .slide_icon li {
-      float: left; }
+      flex-basis: 100%; }
       .slide .slide_icon li img {
         width: 100%; }
 
