@@ -2,7 +2,7 @@
 * @Author: chenjian
 * @Date:   2018-05-05 00:50:42
 * @Last Modified by:   ChrisChen
-* @Last Modified time: 2018-05-07 10:42:55
+* @Last Modified time: 2018-05-27 16:24:49
 */
 
 header {
@@ -10,7 +10,7 @@ header {
 	padding-top:32px;
 	padding-bottom:22px;
 	.cart_title {
-		posiiton:relative;
+		position:relative;
 		h1 {
 			color:#fff;
 			font-size:45px;
@@ -30,7 +30,7 @@ header {
 			text-align:center;
 			height:56px;
 			width:56px;
-			top:24px;
+			top:-5px;
 			left:24px;
 		}
 	}
