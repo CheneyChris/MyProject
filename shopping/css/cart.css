@@ -2,7 +2,7 @@
 * @Author: chenjian
 * @Date:   2018-05-05 00:50:42
 * @Last Modified by:   ChrisChen
-* @Last Modified time: 2018-05-27 16:24:49
+* @Last Modified time: 2018-05-27 16:27:56
 */
 header {
   background: #ef966a;
@@ -63,7 +63,7 @@ header {
       position: absolute;
       right: 20px;
       top: 50%;
-      trnasform: translateY(-50%);
+      transform: translateY(-50%);
       font-size: 25px; }
   .food_list input {
     font-size: 30px;
