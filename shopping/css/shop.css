@@ -36,8 +36,7 @@
     background: #fff !important;
     color: #d35d2e !important; }
 .shop .shop_icon {
-  width: 592px;
-  margin: 0 auto; }
+  margin: 0 24px; }
   .shop .shop_icon .latest_food {
     display: block; }
   .shop .shop_icon .popular_food {
@@ -45,10 +44,15 @@
   .shop .shop_icon ul {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between; }
+    justify-content: space-around; }
     .shop .shop_icon ul li {
+      flex-basis: 48%;
+      box-sizing: border-box;
       padding-bottom: 12px;
+      padding-right: 10px;
       position: relative; }
+      .shop .shop_icon ul li img {
+        width: 100%; }
       .shop .shop_icon ul li h4 {
         color: #000;
         font-size: 25px;
