@@ -37,23 +37,25 @@ body {
 }
 
 .banner .banner_icon li img {
-    width: 625px;
+    width: 100%;
 }
 
 .banner {
     position: relative;
-    width: 625px;
+    width: 100%;
     overflow: hidden;
     border-radius: 6px 6px 0px 0px;
 }
 
 .banner_icon {
-    width: calc(640px * 2);
+    display: flex;
+    width: 200%;
+    /* width: calc(640px * 2); */
     transition: all 0.8s ease-out;
 }
 
 .banner_icon li {
-    width: 625px;
+    flex-basis: 100%;
     float: left;
 }
 
@@ -155,6 +157,8 @@ body {
 }
 
 .every ul li {
+    text-align: center;
+    flex-basis: 25%;
     margin: 15px 0;
     padding: 0px 20px 0px 27px;
 }
@@ -229,11 +233,14 @@ body {
 }
 
 .list ul li {
-    margin-bottom: 22px;
+    margin-bottom: 15px;
     background: #bab4ad;
     border-radius: 3px;
-    flex-basis: 30%;
+    flex-basis: 32.5%;
     box-shadow: 0px 4px 0px 0px #bab4ad;
+}
+.list ul li img {
+    width: 100%;
 }
 
 

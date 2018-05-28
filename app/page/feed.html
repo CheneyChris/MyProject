@@ -17,8 +17,65 @@
     <div class="feed_viewport">
         <input type="checkbox" name="" id="all_btn">
         <div class="feed_all">
-            <div class="feed_content">
 
+            <div class="feed_aside">
+                <div class="seek">
+                    <input type="text" name="" placeholder="Search">
+                </div>
+                <div class="info_slide">
+                    <input type="radio" name="info_slide" id="info_btn1" checked>
+                    <input type="radio" name="info_slide" id="info_btn2">
+                    <div class="info_content">
+
+                        <div class="info info_one">
+                            <div class="head">
+                                <img src="../images/electra.png">
+                            </div>
+                            <h3>Carmen&nbsp;Electra</h3>
+                            <p>Los Angeles, CA</p>
+                        </div>
+
+                        <div class="info info_two">
+                            <div class="head">
+                                <img src="../images/peiqi.jpg">
+                            </div>
+                            <h3>Carmen&nbsp;Electra</h3>
+                            <p>Los Angeles, CA</p>
+                        </div>
+
+                    </div>
+                    <div class="info_list">
+                        <label for="info_btn1" class="info_btn1"></label>
+                        <label for="info_btn2" class="info_btn2"></label>
+                    </div>
+                </div>
+                <div class="select">
+                    <input type="radio" name="select" id="select1">
+                    <input type="radio" name="select" id="select2">
+                    <input type="radio" name="select" id="select3">
+                    <input type="radio" name="select" id="select4">
+                    <input type="radio" name="select" id="select5">
+                    <ul>
+                        <li>
+                            <label for="select1" class="select1"><a href="javascript:void(0)">Feed</a></label>
+                        </li>
+                        <li>
+                            <label for="select2" class="select2"><a href="javascript:void(0)">Explore</a></label>
+                        </li>
+                        <li>
+                            <label for="select3" class="select3"><a href="javascript:void(0)">Friends</a></label>
+                        </li>
+                        <li>
+                            <label for="select4" class="select4"><a href="javascript:void(0)">Rewards</a></label>
+                        </li>
+                        <li>
+                            <label for="select5" class="select5"><a href="../index.html">Settings</a></label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="feed_content">
                 <header>
                     <div class="title">
                         <h1>Freebee</h1>
@@ -29,7 +86,6 @@
                         </label>
                     </div>
                 </header>
-
                 <div class="show">
                     <div class="container">
                         <div class="alba_all">
@@ -79,7 +135,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="menu">
                     <input type="radio" name="menu_btn" id="menu_btn1">
                     <input type="radio" name="menu_btn" id="menu_btn2">
@@ -104,109 +159,48 @@
                         </li>
                     </ul>
                 </div>
-
             </div>
 
-            <div class="feed_aside">
-                <div class="seek">
-                    <input type="text" name="" placeholder="Search">
-                </div>
-                <div class="info_slide">
-                    <input type="radio" name="info_slide" id="info_btn1" checked>
-                    <input type="radio" name="info_slide" id="info_btn2">
-                    <div class="info_content">
-                        <div class="info info_one">
-                            <div class="head">
-                                <img src="../images/electra.png">
-                            </div>
-                            <h3>Carmen&nbsp;Electra</h3>
-                            <p>Los Angeles, CA</p>
-                        </div>
-                        <div class="info info_two">
-                            <div class="head">
-                                <img src="../images/peiqi.jpg">
-                            </div>
-                            <h3>Carmen&nbsp;Electra</h3>
-                            <p>Los Angeles, CA</p>
-                        </div>
-                    </div>
-                    <div class="info_list">
-                        <label for="info_btn1" class="info_btn1"></label>
-                        <label for="info_btn2" class="info_btn2"></label>
-                    </div>
-                </div>
-                <div class="select">
-                    <input type="radio" name="select" id="select1">
-                    <input type="radio" name="select" id="select2">
-                    <input type="radio" name="select" id="select3">
-                    <input type="radio" name="select" id="select4">
-                    <input type="radio" name="select" id="select5">
-                    <ul>
-                        <li>
-                            <label for="select1" class="select1">Feed</label>
-                        </li>
-                        <li>
-                            <label for="select2" class="select2">Explore</label>
-                        </li>
-                        <li>
-                            <label for="select3" class="select3">Friends</label>
-                        </li>
-                        <li>
-                            <label for="select4" class="select4">Rewards</label>
-                        </li>
-                        <li>
-                            <label for="select5" class="select5"><a href="../index.html">Settings</a></label>
-                        </li>
-                    </ul>
-                </div>
-            </div>
         </div>
     </div>
 </body>
 <script type="text/javascript">
 window.onload = function() {
-	let mainELe = document.querySelector('.feed_content');
+    let mainELe = document.querySelector('.feed_content');
 
-	let asideEle = document.querySelector('.feed_aside');
+    let asideEle = document.querySelector('.feed_aside');
 
-	let menu = document.querySelector('.menu');
+    let menu = document.querySelector('.menu');
 
-	let show = document.querySelector('.show');
+    let show = document.querySelector('.show');
 
-	let mainHeight = mainELe.clientHeight;
+    let mainHeight = mainELe.clientHeight;
 
     let key = document.querySelector('#key');
 
     let clickTime = 0;
 
     key.onclick = function() {
-    	clickTime++;
-    	if(clickTime % 2 == 1){
-    		document.body.style.overflow = "hidden";
-    		// document.body.style.marginBottom = "65px"
-    		asideEle.style.height = mainHeight + 'px';
+        clickTime++;
+        if (clickTime % 2 == 1) {
+            document.body.style.overflow = "hidden";
+            // document.body.style.marginBottom = "65px"
+            asideEle.style.height = mainHeight + 'px';
 
-    		// 解决滑动主页后,点击侧边栏也会下拉的问题  有副作用
-	    	let scrollH = document.documentElement.scrollTop;
-                asideEle.style.marginTop = scrollH + 'px';
-	    	// menu.style.marginTop = '-20px'
-    	}else{
-    		document.body.style.overflow = "auto";
-    		asideEle.style.height = (mainHeight - 85) + 'px';
-    		asideEle.style.marginTop = 0;
-    		clickTime = 0
-    	}
-    	console.log(clickTime)
+            // 解决滑动主页后,点击侧边栏也会下拉的问题  有副作用
+            let scrollH = document.documentElement.scrollTop;
+            asideEle.style.marginTop = scrollH + 'px';
+            // menu.style.marginTop = '-20px'
+        } else {
+            document.body.style.overflow = "auto";
+            asideEle.style.height = (mainHeight - 85) + 'px';
+            asideEle.style.marginTop = 0;
+            clickTime = 0
+        }
+        console.log(clickTime)
     }
 
 }
-
-
-
-
-
-
 </script>
-
 
 </html>

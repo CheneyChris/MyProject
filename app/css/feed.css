@@ -5,6 +5,9 @@ header {
     top: 0px;
     background: #e68866;
 }
+body {
+	/* padding-top: 115px; */
+}
 
 header .title {
     position: relative;
@@ -51,6 +54,7 @@ body {
 
 .show {
     width: 100%;
+    padding-top: 115px;
 }
 
 .show .alba_bg img ,
@@ -136,7 +140,7 @@ body {
 	/* transform: rotate(90deg); */
 }
 #all_btn:checked + .feed_all {
-	margin-left: 495px;
+	margin-left: 80%;
 }
 #all_btn:checked + .feed_all .feed_aside {
 
@@ -152,26 +156,19 @@ body {
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 .feed_viewport {
-	width: 640px;
+	width: 100%;
 	/* height: auto; */
 	/* height: 1136px; */
-	margin-left: -494px;
+	margin-left: -80%;
 }
 .feed_all {
-	width: calc(100% + 494px);
+	width: 180%;
+	display: flex;
 	transition: all 0.4s ease-in-out;
-}
-.feed_all::after {
-	content: "";
-	overflow: hidden;
-	height: 0px;
-	display: block;
-	clear: both;
 }
 
 .feed_content {
-	width: 640px;
-	float:right;
+	width: 100%;
 	position: relative;
 	/* overflow: hidden; */
 }
@@ -185,7 +182,7 @@ body {
 	right: 0px;
 }
 .feed_aside {
-	width: 494px;
+	width: 80%;
 	float: left;
 	overflow: hidden;
 	padding-bottom: 85px;
@@ -197,7 +194,8 @@ body {
 	color: #a49f99;
 }
 .feed_aside .seek input {
-	width: 454px;
+	/* width: 454px; */
+	width: 90%;
 	height: 58px;
 	border: 2px solid #595148;
 	background: #5e564d;
@@ -207,8 +205,8 @@ body {
 	outline: none;
 	font-size: 28px;
 	text-indent:60px;
-	margin-left: 20px;
-	margin-bottom: 32px;
+	display: block;
+	margin: 0 auto 32px;
 }
 .info {
     width: 210px;
@@ -222,6 +220,7 @@ body {
     border: 10px solid rgba(0, 0, 0, 0.1);
     border-radius: 50%;
     overflow: hidden;
+    margin: 0 auto;
 }
 .info .head img {
 	width: 100%;
@@ -232,27 +231,32 @@ body {
     color: #fff;
     text-align: center;
     line-height: 24px;
-    margin-top: 28px;
-    margin-bottom: 15px;
+    margin: 28px auto 15px;
 }
 
 .info p {
     font-size: 24px;
     color: #ccc;
+    width: 30%;
+    margin: 0 auto;
     line-height: 24px;
     text-align: center;
     text-indent: 25px;
     background: url('../images/map.png') no-repeat 5px center;
 }
 .info_slide {
-	width: 494px;
+	width: 100%;
+	padding-bottom: 50px;
+	position: relative;
 	overflow: hidden;
 }
 .info_slide input {
 	display: none;
 }
 .info_content {
-	width: calc(494px * 2);
+	/* width: calc(494px * 2); */
+	width: 200%;
+	display: flex;
 	transition: all 0.6s ease-in-out;
 }
 .info_content::after {
@@ -260,14 +264,21 @@ body {
 	display: block;
 	clear: both;
 }
+.info_one,
+.info_two {
+	width: 100%;
+}
 .info {
-	float: left;
-	margin: 0 142px;
+	/* margin: 0 auto; */
 }
 .info_list {
-	margin-top: 42px;
+	/* margin-top: 42px;
 	margin-left: 232px;
-	margin-bottom: 50px;
+	margin-bottom: 50px; */
+	position: absolute;
+	bottom: 0px;
+	left: 50%;
+	transform: translateX(-50%);
 }
 .info_list label {
 	height: 10px;
@@ -286,53 +297,56 @@ input[id="info_btn1"]:checked ~ .info_content {
 	margin-left: 0px;
 }
 input[id="info_btn2"]:checked ~ .info_content {
-	margin-left: -494px;
+	margin-left: -100%;
+}
+.select  {
+	width: 100%;
+	padding-top: 30px;
 }
 .select input {
 	display: none;
 }
-.select ul li label,
-.select ul li label a {
+.select ul li label a{
 	font-size: 30px;
 	text-decoration: none;
 	color: #fff;
 	display: block;
 	border-top: 2px solid #60574e;
 	line-height: 90px;
-	width: 454px;
+	width: 85%;
 	margin: 0 auto;
 	text-indent: 123px;
 	transition: all 0.2s linear
 }
-.select ul li:nth-child(1) label {
+.select ul li:nth-child(1) label a {
 	background: url('../images/feed_list1.png') no-repeat 23px center;
 }
-.select ul li:nth-child(2) label {
+.select ul li:nth-child(2) label a {
 	background: url('../images/feed_list2.png') no-repeat 23px center;
 }
-.select ul li:nth-child(3) label {
+.select ul li:nth-child(3) label a {
 	background: url('../images/feed_list3.png') no-repeat 23px center;
 }
-.select ul li:nth-child(4) label {
+.select ul li:nth-child(4) label a {
 	background: url('../images/feed_list4.png') no-repeat 23px center;
 }
-.select ul li:nth-child(5) label {
+.select ul li:nth-child(5) label a {
 	border-bottom: 2px solid #60574e;
 	background: url('../images/feed_list5.png') no-repeat 23px center;
 }
-#select1:checked ~ ul li label[class="select1"] {
+#select1:checked ~ ul li label[class="select1"] a {
 	background-color: #786f67;
 }
-#select2:checked ~ ul li label[class="select2"] {
+#select2:checked ~ ul li label[class="select2"] a {
 	background-color: #786f67;
 }
-#select3:checked ~ ul li label[class="select3"] {
+#select3:checked ~ ul li label[class="select3"] a {
 	background-color: #786f67;
 }
-#select4:checked ~ ul li label[class="select4"] {
+#select4:checked ~ ul li label[class="select4"] a {
 	background-color: #786f67;
 }
-#select5:checked ~ ul li label[class="select5"] {
+#select5:checked ~ ul li label[class="select5"] a {
 	background-color: #786f67;
 }
 
