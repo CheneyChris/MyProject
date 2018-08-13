@@ -1,0 +1,153 @@
+{{extend ('./layout.html')}}
+
+{{#block ("body")}}
+<div class="admin-content">
+
+  <div class="am-cf am-padding">
+    <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">学生管理</strong> / <small>列表页</small></div>
+  </div>
+
+  <div class="am-g">
+    <div class="am-u-md-6 am-cf">
+      <div class="am-fl am-cf">
+        <div class="am-btn-toolbar am-fl">
+          <div class="am-btn-group am-btn-group-xs">
+            <button type="button" class="am-btn am-btn-default" onclick="location.href='/admin/add'"><span class="am-icon-plus"></span> 新增</button>
+            <!--<button type="button" class="am-btn am-btn-default"><span class="am-icon-save"></span> 保存</button>-->
+            <!--<button type="button" class="am-btn am-btn-default"><span class="am-icon-archive"></span> 审核</button>-->
+            <button type="button" class="am-btn am-btn-default"><span class="am-icon-trash-o"></span> 删除</button>
+          </div>
+
+          <!--<div class="am-form-group am-margin-left am-fl">-->
+            <!--<select>-->
+              <!--<option value="option1">所有类别</option>-->
+              <!--<option value="option2">IT业界</option>-->
+              <!--<option value="option3">数码产品</option>-->
+              <!--<option value="option3">笔记本电脑</option>-->
+              <!--<option value="option3">平板电脑</option>-->
+              <!--<option value="option3">只能手机</option>-->
+              <!--<option value="option3">超极本</option>-->
+            <!--</select>-->
+          <!--</div>-->
+        </div>
+      </div>
+    </div>
+    <div class="am-u-md-3 am-cf">
+      <div class="am-fr">
+        <div class="am-input-group am-input-group-sm">
+          <input type="text" class="am-form-field" placeholder="请输入学生名称" id="admin_name">
+          <span class="am-input-group-btn">
+                  <button class="am-btn am-btn-default" type="button" onclick="search()">搜索</button>
+                </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="am-g">
+    <div class="am-u-sm-12">
+      <form class="am-form">
+        <table class="am-table am-table-striped am-table-hover table-main">
+          <thead>
+          <tr>
+            <th class="table-check"><input type="checkbox" /></th><th class="table-id">ID</th>
+            <th class="table-title">账号</th>
+            <th class="table-set">操作</th>
+          </tr>
+          </thead>
+
+          <tbody>
+            {{#each(array)}}
+            <tr>
+            <td><input type="checkbox" /></td>
+            <td>{{this.admin_id}}</td>
+            <td><a href="#">{{this.admin_name}}</a></td>
+            <td>
+              <div class="am-btn-toolbar">
+                <div class="am-btn-group am-btn-group-xs">
+                  <button onclick="location.href='/admin/edit/{{this.admin_id}}';" type="button" class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span> 编辑</button>
+                  <button type="button" onclick="location.href='/admin/delete/{{this.admin_id}}';" class="am-btn am-btn-default am-btn-xs am-text-danger"><span class="am-icon-trash-o"></span> 删除</button>
+                </div>
+              </div>
+            </td>
+          </tr>
+          {{/each}}
+
+          </tbody>
+        </table>
+        <div class="am-cf">
+          共 {{count}} 条记录
+          <div class="am-fr">
+            <ul class="am-pagination">
+              <!--上翻页-->
+              {{#if( page<=1 )}}
+              <li class="am-disabled"><a href="#">«</a></li>
+              {{else}}
+              <li><a href="/admin/list?page={{page-1}}&keyword={{keyword}}">«</a></li>
+              {{/if}}
+
+              <!--中间页码-->
+              {{#each(totalPageArray)}}
+                {{#if(page===this)}}
+                  <li class="am-active"><a href="#">{{this}}</a></li>
+                {{else}}
+                  <li><a href="/admin/list?page={{this}}&keyword={{keyword}}">{{this}}</a></li>
+                {{/if}}
+              {{/each}}
+
+              <!--下翻页-->
+              {{#if(page >= totalPage)}}
+                <li><a href="#">»</a></li>
+              {{else}}
+                <li><a href="/admin/list?page={{page+1}}&keyword={{keyword}}">»</a></li>
+              {{/if}}
+            </ul>
+          </div>
+        </div>
+      </form>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  function search()
+  {
+      //获取文本框中的关键字
+      var keyword = $("#admin_name").val();
+
+      if(keyword ==null || keyword == "")
+      {
+          alert('请输入要搜索的关键字');
+          return;
+      }
+
+      window.location.href = '/admin/list?page=1&keyword='+keyword;
+  }
+</script>
+
+{{/block}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

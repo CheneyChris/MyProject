@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  	<head>
+	    <meta charset="utf-8">
+	    <title>Simplify Admin</title>
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	    <meta name="description" content="">
+	    <meta name="author" content="">
+
+	    <!-- Bootstrap core CSS -->
+	    <link href="/admin/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+		
+		<!-- Font Awesome -->
+		<link href="/admin/css/font-awesome.min.css" rel="stylesheet">
+
+		<!-- ionicons -->
+		<link href="/admin/css/ionicons.min.css" rel="stylesheet">
+		
+		<!-- Simplify -->
+		<link href="/admin/css/simplify.min.css" rel="stylesheet">
+	
+  	</head>
+
+  	<body class="overflow-hidden light-background">
+		<div class="wrapper no-navigation preload">
+			<div class="sign-in-wrapper">
+				<div class="sign-in-inner">
+					<div class="login-brand text-center">
+						Simplify <strong class="text-skin">Admin</strong>
+					</div>
+
+					<form method="post">
+
+						<div class="form-group">
+							<input type="text" required name="admin_name" class="form-control" placeholder="请输入用户名">
+						</div>
+						<div class="form-group">
+							<input type="password" required name="admin_pwd" class="form-control" placeholder="Password">
+						</div>
+						<div class="form-group">
+							<input type="password" required name="admin_pwd2" class="form-control" placeholder="Confirm Password">
+						</div>
+						<div class="form-group m-bottom-md">
+							<input type="text" required name="admin_email" class="form-control" placeholder="Email Address">
+							<button type="button" onclick="return check_email()" class="btn btn-success block">发送邮件</button>
+						</div>
+						<div class="form-group m-bottom-md">
+							<input type="text" required name="email_code" class="form-control" placeholder="请输入邮箱发送的验证码">
+						</div>
+						<div class="form-group">
+							<div class="custom-checkbox">
+								<input type="checkbox" required value="1" name="admin_accept" id="chkAccept">
+								<label for="chkAccept"></label>
+							</div>
+							I accept the agreement
+						</div>
+
+						<div class="m-top-md p-top-sm">
+							<button style="width:100%;" onclick="return signup()" type="submit" class="btn btn-success block">Create an accounts</button>
+						</div>
+
+						<div class="m-top-md p-top-sm">
+							<div class="font-12 text-center m-bottom-xs">Already have an account?</div>
+							<a href="/main/signin" class="btn btn-default block">Sign In</a>
+						</div>
+					</form>
+				</div><!-- ./sign-in-inner -->
+			</div><!-- ./sign-in-wrapper -->
+		</div><!-- /wrapper -->
+
+		<a href="" id="scroll-to-top" class="hidden-print"><i class="icon-chevron-up"></i></a>
+
+	    <!-- Le javascript
+	    ================================================== -->
+	    <!-- Placed at the end of the document so the pages load faster -->
+		
+		<!-- Jquery -->
+		<script src="/admin/js/jquery-1.11.1.min.js"></script>
+		
+		<!-- Bootstrap -->
+	    <script src="/admin/bootstrap/js/bootstrap.min.js"></script>
+		
+		<!-- Slimscroll -->
+		<script src='/admin/js/jquery.slimscroll.min.js'></script>
+		
+		<!-- Popup Overlay -->
+		<script src='/admin/js/jquery.popupoverlay.min.js'></script>
+
+		<!-- Modernizr -->
+		<script src='/admin/js/modernizr.min.js'></script>
+		
+		<!-- Simplify -->
+		<script src="/admin/js/simplify/simplify.js"></script>
+	
+  	</body>
+</html>
+<script>
+	function check_email()
+	{
+        var reg = new RegExp("^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$");
+
+        var admin_email = $("input[name='admin_email']").val();
+
+        if(!reg.test(admin_email))
+        {
+            alert("邮箱地址出错，请重新填写");
+            return false;
+        }
+
+        $.ajax({
+			method:'post',
+			data:'email='+admin_email,
+			url:"/main/sendEmail",
+			dataType:"json",
+			success:function(result)
+			{
+				if(result.send)
+				{
+				    alert('邮件已发送');
+				    return false;
+				}else{
+				    alert('邮件发送失败，请重新填写地址');
+                    return false;
+				}
+			}
+		});
+
+
+	}
+
+
+	function signup()
+	{
+		var admin_pwd = $("input[name='admin_pwd']").val();
+		var admin_pwd2 = $("input[name='admin_pwd2']").val();
+
+		if(admin_pwd != admin_pwd2)
+		{
+		    alert("密码和确认密码不一致，请重新填写!!");
+		    return false;
+		}
+
+	}
+</script>

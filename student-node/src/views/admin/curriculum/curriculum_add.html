@@ -1,0 +1,68 @@
+{{extend ('../layout.html')}}
+
+{{#block("body")}}
+<div class="main-container">
+    <div class="padding-md">
+        <h2 class="header-text">
+            编辑课程
+        </h2>
+        <div class="smart-widget m-top-lg widget-dark-blue">
+            <div class="smart-widget-header">
+                编辑课程
+                <span class="smart-widget-option">
+								<span class="refresh-icon-animated">
+									<i class="fa fa-circle-o-notch fa-spin"></i>
+								</span>
+	                            <a href="#" class="widget-toggle-hidden-option">
+	                                <i class="fa fa-cog"></i>
+	                            </a>
+	                            <a href="#" class="widget-collapse-option" data-toggle="collapse">
+	                                <i class="fa fa-chevron-up"></i>
+	                            </a>
+	                            <a href="#" class="widget-refresh-option">
+	                                <i class="fa fa-refresh"></i>
+	                            </a>
+	                            <a href="#" class="widget-remove-option">
+	                                <i class="fa fa-times"></i>
+	                            </a>
+	                        </span>
+            </div>
+            <div class="smart-widget-inner">
+                <div class="smart-widget-hidden-section">
+                    <ul class="widget-color-list clearfix">
+                        <li style="background-color:#20232b;" data-color="widget-dark"></li>
+                        <li style="background-color:#4c5f70;" data-color="widget-dark-blue"></li>
+                        <li style="background-color:#23b7e5;" data-color="widget-blue"></li>
+                        <li style="background-color:#2baab1;" data-color="widget-green"></li>
+                        <li style="background-color:#edbc6c;" data-color="widget-yellow"></li>
+                        <li style="background-color:#fbc852;" data-color="widget-orange"></li>
+                        <li style="background-color:#e36159;" data-color="widget-red"></li>
+                        <li style="background-color:#7266ba;" data-color="widget-purple"></li>
+                        <li style="background-color:#f5f5f5;" data-color="widget-light-grey"></li>
+                        <li style="background-color:#fff;" data-color="reset"></li>
+                    </ul>
+                </div>
+                <div class="smart-widget-body">
+                    <form method="post">
+
+                        <div class="form-group">
+                            <label for="curriculum_name">课程名称</label>
+                            <input type="text" class="form-control" value=""
+                                   name="curriculum_name" id="curriculum_name" placeholder="请输入课程名称">
+                        </div><!-- /form-group -->
+
+                        <div class="form-group">
+                            <label for="curriculum_price">课程价格(RMB)</label>
+                            <input type="text" class="form-control" value=""
+                                   name="curriculum_price" id="curriculum_price" placeholder="请输入课程名称">
+                        </div><!-- /form-group -->
+
+                        <button type="submit" class="btn btn-success btn-sm">Submit</button>
+                    </form>
+                </div>
+            </div><!-- ./smart-widget-inner -->
+        </div>
+
+    </div>
+</div>
+{{/block}}

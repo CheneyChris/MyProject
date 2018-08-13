@@ -1,0 +1,113 @@
+{{extend ('../layout.html')}} {{#block ("body")}}
+<div class="main-container">
+	<div class="padding-md">
+		<ul class="breadcrumb">
+			<li>
+				<span class="primary-font">
+					<i class="icon-home"></i>
+				</span>
+				<a href="/"> Home</a>
+			</li>
+			<li>消费记录列表</li>
+		</ul>
+		<form method="POST" action="/expense/expense_delete">
+			<table class="table table-striped" id="dataTable">
+				<thead>
+					<tr>
+						<th>
+							<input type="checkbox" name="" id="alldel">
+						</th>
+						<th>ID</th>
+						<th>消费金额</th>
+						<th>消费时间</th>
+						<th>描述</th>
+						<th>消费用户</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					{{#each(array)}}
+					<tr>
+						<td>
+							<input type="checkbox" name="expense_id" value="{{this.expense_id}}">
+						</td>
+						<td>{{this.expense_id}}</td>
+						<td>{{this.expense_sum}}</td>
+						<td class="data_time" data-time="{{this.expense_time}}"></td>
+						<td>{{this.expense_describe}}</td>
+						<td>{{this.user_name}}</td>
+						<td>
+							<a href="/expense/expense_edit/{{this.expense_id}}">编辑</a>
+							<a onclick="return confirm('是否确认删除');" href="/expense/expense_delete/{{this.expense_id}}">删除</a>
+
+						</td>
+					</tr>
+					{{/each}}
+					<tr>
+						<td colspan="5">
+							<button id="deleteBtn" type="submit" class="btn btn-danger marginTB-xs">批量删除</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</form>
+
+		{{include ("../common/page.html")}}
+	</div>
+	<!-- ./padding-md -->
+</div>
+<!-- /main-container -->
+{{/block}}
+<script>
+	//反选和全选
+	$("#alldel").click(function () {
+		$("input[name=expense_id]").each(function () {
+			if (this.checked) {
+				this.checked = false;
+			} else {
+				this.checked = true;
+			}
+		});
+	});
+	//判断是否有选择
+	$("#deleteBtn").click(function () {
+		var number = 0;
+		$("input[name='expense_id']").each(function () {
+			if (this.checked) {
+				number++;
+			}
+		});
+
+		if (number <= 0) {
+			alert('未选择删除的管理员，请选择');
+			return false;
+		} else {
+			if (!confirm('是否确认批量删除？')) {
+				return false;
+			}
+		}
+
+		return true;
+	});
+</script>
+<script>
+	$(document).ready(function () {
+		var data_time = $(".data_time");
+
+		data_time.each(function (item) {
+			var date = timestampToTime(this.dataset.time);
+			this.innerHTML = "";
+			this.innerHTML = date;
+		});
+
+		function timestampToTime(timestamp) {
+			var date = new Date(timestamp * 1000); //时间戳为10位需*1000，时间戳为13位的话不需乘1000
+			Y = date.getFullYear() + '-';
+			M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';
+			D = date.getDate() + ' ';
+			h = date.getHours() + ':';
+			m = date.getMinutes();
+			return Y + M + D + h + m;
+		}
+	});
+</script>

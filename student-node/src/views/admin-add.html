@@ -1,0 +1,38 @@
+{{extend ('./layout.html')}}
+
+{{#block ("body")}}
+<div class="admin-content">
+  <div class="am-cf am-padding">
+    <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">添加管理员</strong> / <small>Personal information</small></div>
+  </div>
+
+  <hr/>
+
+  <div class="am-g">
+
+    <div class="am-u-sm-12 am-u-md-10 am-u-md-pull-12">
+      <form action="/admin/add" class="am-form am-form-horizontal" method="post">
+        <div class="am-form-group">
+          <label for="admin_name" class="am-u-sm-3 am-form-label">管理员名称 / Name</label>
+          <div class="am-u-sm-9">
+            <input type="text" id="admin_name" name="admin_name" placeholder="班级名称">
+          </div>
+        </div>
+        <div class="am-form-group">
+          <label for="admin_pwd" class="am-u-sm-3 am-form-label">管理员密码</label>
+          <div class="am-u-sm-9">
+            <input type="password" id="admin_pwd" name="admin_pwd" />
+          </div>
+        </div>
+
+
+        <div class="am-form-group">
+          <div class="am-u-sm-9 am-u-sm-push-3">
+            <button type="submit" class="am-btn am-btn-primary">提交</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{{/block}}

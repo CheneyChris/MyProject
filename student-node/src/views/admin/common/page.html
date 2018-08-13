@@ -1,0 +1,39 @@
+<div class="text-center">
+	<ul class="pagination">
+		{{#if(page === 1)}}
+		<li>
+			<a href="javascript:void(0)" aria-label="Previous">
+				<span aria-hidden="true">&laquo;</span>
+			</a>
+		</li>
+		{{else}}
+		<li>
+			<a href="{{pageUrl}}?page={{page-1}}" aria-label="Previous">
+				<span aria-hidden="true">&laquo;</span>
+			</a>
+		</li>
+		{{/if}}
+
+		{{#each(totalPageArray)}}
+		{{#if(this === page)}}
+		<li class="{{this === page ?'active':''}}"><a href="javascript:void(0)">{{this}}</a></li>
+		{{else}}
+		<li><a href="{{pageUrl}}?page={{this}}">{{this}}</a></li>
+		{{/if}}
+		{{/each}}
+
+		{{#if(page >= totalPage)}}
+		<li>
+			<a href="javascript:void(0)" aria-label="Next">
+				<span aria-hidden="true">&raquo;</span>
+			</a>
+		</li>
+		{{else}}
+		<li>
+			<a href="{{pageUrl}}?page={{page+1}}" aria-label="Next">
+				<span aria-hidden="true">&raquo;</span>
+			</a>
+		</li>
+		{{/if}}
+	</ul>
+</div>

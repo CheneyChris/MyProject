@@ -1,0 +1,497 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/chatServerCss/bootstrap.css" />
+    <link rel="stylesheet" href="/css/chatServerCss/reset.css" />
+    <link rel="stylesheet" href="/css/chatServerCss/app.css" />
+
+    <style>
+        #chatbox {
+            width: 100%;
+
+        }
+
+        .clear::after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        .wrapper {
+            width: 70%;
+            float: left;
+            height: 96vh;
+        }
+
+        #firend_list {
+            width: 25%;
+            float: left;
+        }
+
+        .chat {
+            height: 60vh !important;
+        }
+
+        .action {
+            height: 23.9vh !important;
+        }
+
+        #chat_content {
+            height: 16vh;
+        }
+
+        #firend_list .wrapper {
+            width: 100% !important;
+        }
+
+        #firend_list .content {
+            margin-top: 5%;
+            height: 95%;
+            background: white;
+        }
+
+        #firends {
+            color: black;
+        }
+
+        .msgremind:hover {
+            color: red !important;
+            cursor: pointer;
+        }
+
+        .remindAdnimation {
+            animation: shake 1s 3;
+            display: inline-block;
+        }
+
+        @keyframes shake {
+            0% {
+                transform: translateY(-5px);
+            }
+            10% {
+                transform: translateY(0px);
+            }
+            20% {
+                transform: translateY(-5px);
+            }
+            30% {
+                transform: translateY(0px);
+            }
+            40% {
+                transform: translateY(-5px);
+            }
+            50% {
+                transform: translateY(0px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+            70% {
+                transform: translateY(0px);
+            }
+            80% {
+                transform: translateY(-5px);
+            }
+            90% {
+                transform: translateY(-3px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        .timestyle {
+            font-size: 12px;
+            color: aquamarine;
+        }
+
+        .selfmsg {
+            text-align: right;
+        }
+
+        .overflow {
+            overflow: hidden;
+        }
+
+        .chatTabStyle {
+            color: black !important;
+        }
+
+        #curlonginuser {
+            color: black;
+            font-size: 20px;
+            font-weight: bold
+        }
+    </style>
+    <link rel="stylesheet" href="/plug-in/tabControl/style.css">
+    <script src="/plug-in/tabControl/jquery.js"></script>
+    <script src="/plug-in/tabControl/jquery.SuperSlide.2.1.1.js"></script>
+</head>
+
+<body>
+    <div style="text-align: center">
+        <span id="curlonginuser"></span>
+
+    </div>
+
+    <div id="chatbox clear">
+
+        <div class="set-content wrapper">
+            <div class="set-title hd">
+                <ul class="clearfix" id="chatTab">
+
+                    <li name="priuserTab" onclick="activateTab(this)" data-priObj="all" class="overflow chatTabStyle on">群聊</li>
+
+
+                </ul>
+
+            </div>
+
+            <div class="set-middle bd" id="tabChatContent">
+                <ul class="set-middle-item">
+                    <div class="content chat" id="chatAll">
+                        <ul id="chat_containerAll"></ul>
+                    </div>
+                </ul>
+
+            </div>
+            <div class="action">
+                <textarea id="chat_content"></textarea>
+                <button type="button" id="send" class="btn btn-success">发送</button>
+                <button type="button" id="clear" class="btn btn-success">清屏</button>
+            </div>
+        </div>
+        <div id="firend_list">
+            <div class="wrapper">
+                <div class="content">
+                    <ul id="firends_container"></ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+<script>
+    initEffect();
+
+    function initEffect() {
+        jQuery(".set-content").slide({
+            autoPlay: false,
+            trigger: "click",
+            delayTime: 700,
+            pnLoop: false
+        });
+    }
+</script>
+
+</html>
+<script src="/js/chatServerJs/socket.io.min.js"></script>
+<script src="/js/cookie.js"></script>
+<script>
+    //給聊天添加時間效果
+    function getNowFormatDate() {
+        var date = new Date();
+        var year = date.getFullYear();
+        var month = date.getMonth() + 1;
+        var strDate = date.getDate();
+        var hours = date.getHours();
+        var minutes = date.getMinutes();
+        var seconds = date.getSeconds();
+        if (month >= 1 && month <= 9) {
+            month = "0" + month;
+        }
+        if (strDate >= 0 && strDate <= 9) {
+            strDate = "0" + strDate;
+        }
+        var currentdate = `${year}-${month}-${strDate}  ${hours}:${minutes}:${seconds}`;
+
+        return currentdate;
+    }
+
+    //客户端链接服务器端
+    var ws = io.connect('http://localhost:3001');
+
+    function test() {
+        let loginuserjsonstr = cookie.get('loginUser');
+        return loginuser = JSON.parse(loginuserjsonstr); //当前用户
+    }
+
+    function golive() {
+        let loginuser = '{{loginuser}}';
+        loginuser = loginuser.replace(/&quot;/g, "\"");
+        return loginuser = JSON.parse(loginuser);
+
+    }
+
+    let loginuser = null;
+    //测试
+    // loginuser = test();
+
+    //正式
+    loginuser = golive();
+
+    $("#curlonginuser").html(`当前登录用户：${loginuser.name}`); //添加用户信息在标题栏
+    let curPriObjId = 'All';
+    initTab();
+    //初始化判断当前是否是私聊
+    function initTab() {
+        $("li[name^=priuserTab]").each((k, v) => {
+            if ($(v).hasClass('on')) {
+                let priObj = $(v).attr('data-priObj');
+                if (priObj != "all") {
+                    curPriObjId = priObj;
+                } else {
+                    curPriObjId = 'All';
+                }
+            }
+        });
+    }
+    //判断当前是否是私聊
+    function activateTab(self) {
+
+        $("li[name^=priuserTab]").each((k, v) => {
+            if ($(v).hasClass('on')) {
+                $(v).removeClass("on");
+            }
+        });
+        $(self).addClass("on");
+        let priObj = $(self).attr('data-priObj');
+        if (priObj != "all") {
+            curPriObjId = priObj;
+        } else {
+            curPriObjId = 'All';
+        }
+    }
+
+    //客户端链接成功事件
+    ws.on('connect', function () {
+
+        //群聊
+        ws.emit('join', loginuser);
+        //更新右侧在线用户列表
+        ws.emit('refreshOfgroup', loginuser);
+        //客户端群聊接收消息
+        ws.on('getMsg', function (user, msg) {
+            addMessage(user, msg);
+        });
+        //服务器发给客户端的提示
+        ws.on('notice', function (user, msg) {
+            addMessage(user, msg);
+        });
+        //刷新群聊在线用户列表
+        ws.on('inlineClient', function (client_list) {
+            removeFirend();
+            client_list.forEach((client, key) => {
+                addInlineUser(client);
+            });
+        });
+
+        ws.on("pri_join_client", function (targetid) {
+            //私聊
+            //服务器发给私聊客户端的提示
+            ws.on('pri_notice', function (user, msg) {
+                addMessage(user, msg, targetid);
+            });
+            // ws.removeAllListeners(`pri_getMsg${targetid}`);
+            //客户端私聊接收消息
+            ws.on(`pri_getMsg${targetid}`, function (user, msg) {
+                // console.log(`接收到${targetid}的消息`);
+                addMessage(user, msg, targetid);
+            });
+            // console.log(`注册事件：pri_getMsg${targetid}`);
+            // console.log("注册的接收事件：",ws.listeners(`pri_getMsg${targetid}`));
+        });
+
+
+        ws.on("disabledSend",function(selfid){
+            // console.log("来到解开禁用");
+            disabledSendMsg(selfid,false);
+        });
+
+        //接收聊天信息提醒
+        ws.on('receiveChatRemind', function (targetUser) {
+
+            let tarUser = null;
+            $("li[name=msgremind]").each(function () {
+                tarUser = $(this).attr('targetuserid') == targetUser.id ? $(this) : false;
+            });
+            if (tarUser) {
+                tarUser.children("span").removeClass("remindAdnimation");
+                tarUser.children("span").addClass("remindAdnimation");
+            } else {
+                let msgel = $(
+                    `<li name="msgremind" targetuserid = ${targetUser.id} targetusername=${targetUser.name} onclick="agreePri(this)"><span><a class="msgremind" href="javascript:;" >${targetUser.name}发来消息~</a></span></li>`
+                )
+                $(`#firends_container`).prepend(msgel);
+                $("li[name=msgremind]").children("span").addClass("remindAdnimation");
+            }
+        });
+    });
+
+    //创建标签和聊天窗口
+    function createTabAndWindow(self, targetuserid, targetusername) {
+
+        //切换标签窗口
+        let chatTab = $(
+            `<li name="priuserTab" class="overflow chatTabStyle" onclick="activateTab(this)" data-priObj="${targetuserid}" class="overflow">${targetusername}</li>`
+        )
+        $("#chatTab").append(chatTab);
+        activateTab(chatTab);
+        let tabChatContent = $(
+            `<div class="content chat" id="chat${targetuserid}">
+                        <ul id="chat_container${targetuserid}"></ul>
+                    </div>`
+        );
+        $("#tabChatContent").append(tabChatContent);
+        initEffect();
+    }
+
+    //判断是否已经在私聊
+    function isPring(targetid) {
+        let ispring = false;
+        $("li[name=priuserTab]").each(function () {
+            if ($(this).attr("data-priObj") == targetid) {
+                ispring = true;
+            }
+        })
+        return ispring;
+    }
+
+
+    //禁止向某个用户發送消息
+    function disabledSendMsg(targetid, disabled = false) {
+        // console.log("来到禁止发消息");
+        $("li[name^=priuserTab]").each((k, v) => {
+            if ($(v).hasClass('on') && $(v).attr("data-priObj") == targetid) {
+                
+                $("#chat_content").attr("disabled", disabled);
+                $("#send").attr("disabled", disabled);
+            }
+        });
+
+    }
+    //发起私聊
+    function startPri(self) {
+
+        let targetuserid = $(self).attr("targetuserid");
+        let targetusername = $(self).attr("targetusername");
+
+        if (isPring(targetuserid)) {
+            alert("你们已经在聊天了");
+            return;
+        } else {
+            createTabAndWindow(self, targetuserid, targetusername);
+            
+            //加入私聊
+            ws.emit('pri_join', loginuser, targetuserid);
+            ws.emit('startPri', targetuserid);
+            
+            disabledSendMsg(targetuserid,true);
+            // console.log(`向${targetuserid}发起私聊`);
+        }
+    }
+
+    //同意私聊
+    function agreePri(self) {
+        let targetuserid = $(self).attr("targetuserid");
+        let targetusername = $(self).attr("targetusername");
+
+        createTabAndWindow(self, targetuserid, targetusername);
+
+        //加入私聊
+        ws.emit('pri_join', loginuser, targetuserid);
+
+        ws.emit('agreePri', targetuserid);
+  
+        setTimeout(function () {
+            $(self).remove();
+        }, 1);
+    }
+
+
+    //清空在线用户列表
+    var removeFirend = function () {
+        $(`#firends_container`).html("");
+    }
+    //添加在线用户
+    var addInlineUser = function (inlineUser) {
+        if (inlineUser.id == loginuser.id) return;
+        var li = document.createElement("li");
+
+        li.innerHTML =
+            `<a href="javascript:;" class="msgremind" targetuserid="${inlineUser.id}" targetusername="${inlineUser.name}" onclick="startPri(this)" >${inlineUser.name}</a>`;
+        document.getElementById("firends_container").appendChild(li);
+    }
+
+    //客户端发消息
+    var sendMsg = function () {
+        var msg = document.getElementById('chat_content').value;
+
+        addMessage("我", msg, curPriObjId, true);
+
+        if (curPriObjId != 'All') {
+            ws.emit(`pri_sendMsg`, msg, curPriObjId); //私聊用的
+            // console.log("发送消息给：", curPriObjId);
+        } else {
+            ws.emit('sendMsg', msg); //群聊用的
+        }
+
+        document.getElementById('chat_content').value = "";
+
+        //添加焦点
+        document.getElementById('chat_content').focus();
+    };
+
+
+
+    //将信息显示到界面上
+    var addMessage = function (user, msg, targetidTab = "All", self = false) {
+        var li = document.createElement("li");
+        li.innerHTML = `<span class="timestyle">${getNowFormatDate()}</span><br/><span>${user}</span>：${msg}`;
+        if (self) {
+            li.innerHTML = `<span class="timestyle">${getNowFormatDate()}</span><br/>${msg}<span>:${user}</span>`;
+            $(li).addClass("selfmsg");
+        }
+
+        let chatWindow = document.getElementById(`chat${targetidTab}`);
+        $(chatWindow).children(`#chat_container${targetidTab}`).append($(li));
+
+        //设置滚动条底部显示
+        document.getElementById(`chat${targetidTab}`).scrollTop = document.getElementById(`chat${targetidTab}`).scrollHeight;
+
+    };
+    //获取当前聊天标签用户id
+    function getNowTabTargetId(){
+        let targetid = null ;
+        $("li[name^=priuserTab]").each((k, v) => {
+            if ($(v).hasClass('on')) {
+                targetid = $(v).attr("data-priObj");                
+            }
+        });
+        return targetid;
+    }
+    //清除屏幕
+    document.getElementById('clear').onclick = function () {
+        // console.log("清屏");
+
+        //判断当前所在的聊天标签在哪
+        let targetid = getNowTabTargetId();
+        document.getElementById(`chat_container${targetid}`).innerHTML = "";
+    };
+    //发送数据
+    document.getElementById('send').onclick = function () {
+        sendMsg();
+    };
+    //发送按钮
+    document.getElementById('chat_content').addEventListener('keydown', function (e) {
+        if (e.keyCode == 13) {
+            sendMsg();
+        }
+    });
+</script>

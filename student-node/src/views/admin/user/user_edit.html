@@ -1,0 +1,119 @@
+{{extend ('../layout.html')}} {{#block("body")}}
+<div class="main-container">
+    <div class="padding-md">
+        <h2 class="header-text">
+            编辑用户
+        </h2>
+        <div class="smart-widget m-top-lg widget-dark-blue">
+            <div class="smart-widget-header">
+                编辑用户
+                <span class="smart-widget-option">
+                    <span class="refresh-icon-animated">
+                        <i class="fa fa-circle-o-notch fa-spin"></i>
+                    </span>
+                    <a href="#" class="widget-toggle-hidden-option">
+                        <i class="fa fa-cog"></i>
+                    </a>
+                    <a href="#" class="widget-collapse-option" data-toggle="collapse">
+                        <i class="fa fa-chevron-up"></i>
+                    </a>
+                    <a href="#" class="widget-refresh-option">
+                        <i class="fa fa-refresh"></i>
+                    </a>
+                    <a href="#" class="widget-remove-option">
+                        <i class="fa fa-times"></i>
+                    </a>
+                </span>
+            </div>
+            <div class="smart-widget-inner">
+                <div class="smart-widget-hidden-section">
+                    <ul class="widget-color-list clearfix">
+                        <li style="background-color:#20232b;" data-color="widget-dark"></li>
+                        <li style="background-color:#4c5f70;" data-color="widget-dark-blue"></li>
+                        <li style="background-color:#23b7e5;" data-color="widget-blue"></li>
+                        <li style="background-color:#2baab1;" data-color="widget-green"></li>
+                        <li style="background-color:#edbc6c;" data-color="widget-yellow"></li>
+                        <li style="background-color:#fbc852;" data-color="widget-orange"></li>
+                        <li style="background-color:#e36159;" data-color="widget-red"></li>
+                        <li style="background-color:#7266ba;" data-color="widget-purple"></li>
+                        <li style="background-color:#f5f5f5;" data-color="widget-light-grey"></li>
+                        <li style="background-color:#fff;" data-color="reset"></li>
+                    </ul>
+                </div>
+                <div class="smart-widget-body">
+                    <form method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="user_name">用户名称</label>
+                            <input type="text" class="form-control" value="{{userInfo.user_name}}" name="user_name" id="user_name" placeholder="请输入用户名称">
+                        </div>
+                        <div class="form-group">
+                            <label>年龄</label>
+                            <input type="text" class="form-control" value="{{userInfo.user_age}}" name="user_age" id="user_age" placeholder="请输入用户年龄">
+                        </div>
+                        <div class="form-group">
+                            <label>用户性别</label>
+                            <p>
+                                男:
+                                <input type="radio" {{userInfo.user_sex===1 ? "checked": ""}} name="user_sex" value="1"> 女:
+                                <input type="radio" {{userInfo.user_sex===0 ? "checked": ""}} name="user_sex" value="0">
+                            </p>
+                        </div>
+                        <!-- /form-group -->
+
+                        <div class="form-group">
+                            <label for="user_phone">联系方式</label>
+                            <input type="text" class="form-control" value="{{userInfo.user_phone}}" name="user_phone" id="user_phone" placeholder="请输入用户联系方式">
+                        </div>
+
+                        <div class="form-group">
+							<label style="padding-left:0px" class="col-lg-2 control-label">上传头像</label>
+							<br>
+							<div style="padding:20px 0px;" class="col-lg-12">
+								<input type="file" name="user_img" />
+							</div>
+							<!-- /.col -->
+							<div style="height:160px;width:160px;border-radius:50%;overflow:hidden;">
+								<img style="height:100%;width:100%" src="/admin/uploads/{{userInfo.user_img}}" alt="">
+							</div>
+						</div>
+
+                        <div class="form-group">
+                            <label for="user_introduction">自我介绍</label>
+                            <textarea type="text" class="form-control"
+                             value="{{userInfo.user_introduction}}"
+                             name="user_introduction" id="user_introduction"
+                              cols="1" rows="5" placeholder="自我介绍">
+                              {{userInfo.user_introduction}}
+                            </textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="user_time">修改时间</label>
+                            <input type="date" class="form-control" value="{{userInfo.user_time}}" name="user_time" id="user_time" placeholder="请输入时间">
+                        </div>
+
+                        <!-- /form-group -->
+                        <button type="submit" class="btn btn-success">Submit</button>
+                    </form>
+                </div>
+            </div>
+            <!-- ./smart-widget-inner -->
+        </div>
+
+        <script>
+            let getId = document.querySelectorAll(".getId");
+            getId.forEach(item => {
+                item.onclick = function () {
+                    let stu_id = parseInt(this.getAttribute('data-stu-id'));
+                    let sub_id = parseInt(this.getAttribute('data-sub-id'));
+                    if (confirm("确认删除?")) {
+                        window.location.href = `/student/student_subject?stu_id=${stu_id}&sub_id=${sub_id}`
+                    }
+                }
+            });
+        </script>
+
+
+    </div>
+</div>
+{{/block}}
