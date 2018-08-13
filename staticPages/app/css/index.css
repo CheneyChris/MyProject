@@ -1,4 +1,6 @@
 body {
+	height: 100%;
+	overflow: hidden;
 	background: #85d2c5;
 	padding-bottom: 200px;
 }
