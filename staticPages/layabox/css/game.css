@@ -16,13 +16,23 @@ header {
 	width: 100%;
 	/* position: relative; */
 }
+.banner_box ul:after {
+	display: block;
+	clear: both;
+	content: '';
+}
 .banner_box input {
 	display: none;
 }
 body {
 	position: relative;
 }
+.banner_img {
+	width: 200%;
+	display: flex;
+}
 .banner_img li {
+    width:100%;
 	position: absolute;
 	left: 0;
 	opacity: 0;
