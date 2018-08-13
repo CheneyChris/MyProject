@@ -1,0 +1,75 @@
+<div class="header">
+    <h1 class="page-title">食品列表</h1>
+</div>
+<ul class="breadcrumb">
+    <li>
+        <a ui-sref="main">Home</a>
+        <span class="divider">/</span>
+    </li>
+    <li class="active">List</li>
+</ul>
+
+<div class="container-fluid">
+    <div class="row-fluid">
+
+        <div class="btn-toolbar">
+            <button class="btn btn-primary" ui-sref="food_cate_add">
+                <i class="icon-plus"></i>添加食品</button>
+            <div class="btn-group">
+            </div>
+        </div>
+
+        <div class="well">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>食品分类名称</th>
+                        <th style="width: 50px;">操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in cate_list">
+                        <td> {{ item.fcate_id}} </td>
+                        <td> {{ item.fcate_name}} </td>
+                        <td>
+                            <a ui-sref="food_cate_edit({'fcate_id':item.fcate_id})">
+                                <i class="icon-pencil"></i>
+                            </a>
+                            <a href="#myModal" ng-click="deleteFoodCate(item.fcate_id)" role="button" data-toggle="modal">
+                                <i class="icon-remove"></i>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="pagination">
+            <ul uib-pagination total-items="totalItems" ng-model="currentPage" items-per-page="bigTotalItems" max-size="maxSize" ng-change="pageChanged()"></ul>
+        </div>
+
+        <div class="modal small hide fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 id="myModalLabel">Delete Confirmation</h3>
+            </div>
+
+
+            <div class="modal-body">
+                <p class="error-text">
+                    <i class="icon-warning-sign modal-icon"></i>Are you sure you want to delete the user?</p>
+            </div>
+
+            <!-- 删除按钮 -->
+            <div class="modal-footer">
+                <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+
+                <button type="button" ui-sref="food_cate_delete({'fcate_id':fcate_id})" class="btn btn-danger" data-dismiss="modal">Delete</button>
+            </div>
+
+        </div>
+
+    </div>
+</div>

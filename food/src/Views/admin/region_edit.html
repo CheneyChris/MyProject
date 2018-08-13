@@ -1,0 +1,35 @@
+<div class="header">
+    <h1 class="page-title">添加地区分类</h1>
+</div>
+<ul class="breadcrumb">
+    <li><a ui-sref="main">Home</a> <span class="divider">/</span></li>
+    <li class="active">添加地区分类</li>
+</ul>
+<div class="container-fluid">
+    <div class="row-fluid">
+
+        <div class="btn-toolbar">
+            <button class="btn btn-primary" type="button" ui-sref="food_list"><i class="icon-list"></i>返回地区分类列表页面</button>
+            <div class="btn-group">
+            </div>
+        </div>
+
+        <div class="well">
+            <div id="myTabContent" class="tab-content">
+                <div class="tab-pane active in" id="home">
+                    <form>
+                        <label>地区名称</label>
+                        <input type="text" ng-model="region.region_name" value="" class="input-xxlarge" placeholder="请输入地区名称" required>
+                        <input type="button" class="btn btn-primary" ng-click="get_region(region.region_name)" value="提交" />
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <hr>
+            <p>&copy; 2017 <a href="#" target="_blank">copyright</a></p>
+        </footer>
+
+    </div>
+</div>

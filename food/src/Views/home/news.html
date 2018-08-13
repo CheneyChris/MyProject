@@ -1,0 +1,42 @@
+<ul class="breadnav clearfix">
+	<li class="bnav-item">
+		<a ui-sref="home">首页</a>
+	</li>
+	<li class="bnav-item">&lt;</li>
+	<li class="bnav-item">
+		<a ui-sref="news">新闻资讯</a>
+	</li>
+</ul>
+<div class="newslist-wrap">
+	<p class="newslist-tit">新闻资讯</p>
+
+	<div ng-repeat="item in news_list">
+		<dl class="newslist-box clearfix">
+			<dt class="newslist-pic">
+				<img ng-src=" ../Assets/{{ item.art_img }}" />
+			</dt>
+			<dd class="newslist-txt">
+				<a ui-sref="news_info({news_id:item.art_id})" class="newslist-font24"> {{ item.art_id }} + {{ item.art_title }} </a>
+				<ul class="newslist-ul">
+					<li class="newslist-li">
+						<p class="newslist-time"> {{ item.art_time | date:"yyyy.mm.dd" }} </p>
+					</li>
+					<li class="newslist-li">
+						<a href="news-con.html" class="newslist-con"> {{ item.art_content }} </a>
+					</li>
+					<li class="newslist-li">
+						<a class="newslist-link" href="news-con.html">&lt;阅读全文&gt;</a>
+					</li>
+				</ul>
+			</dd>
+		</dl>
+		<span class="news-line">
+			<img src="../Assets/uploads/news-line.png" />
+		</span>
+	</div>
+
+
+	<div style="width:100%;text-align: center;">
+		<ul uib-pagination total-items="totalItems" ng-model="currentPage" items-per-page="bigTotalItems" max-size="maxSize" ng-change="pageChanged()"></ul>
+	</div>
+</div>

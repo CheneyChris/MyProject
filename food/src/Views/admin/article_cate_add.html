@@ -1,0 +1,37 @@
+<div class="header">
+    <h1 class="page-title">添加食品</h1>
+</div>
+<ul class="breadcrumb">
+    <li><a ui-sref="main">Home</a> <span class="divider">/</span></li>
+    <li class="active">添加食品</li>
+</ul>
+<div class="container-fluid">
+    <div class="row-fluid">
+
+        <div class="btn-toolbar">
+            <button class="btn btn-primary" type="button" ui-sref="article_cate"><i class="icon-list"></i>返回食品列表页面</button>
+            <div class="btn-group">
+            </div>
+        </div>
+
+        <div class="well">
+            <div id="myTabContent" class="tab-content">
+                <div class="tab-pane active in" id="home">
+                    <form>
+                        <label>食品名称</label>
+                        <input type="text" ng-model="cate.artcate_name" value="" class="input-xxlarge" placeholder="请输入食品名称" required>
+                        <label>所属分类</label>
+
+                        <input type="button" class="btn btn-primary" ng-click="saveForm()" value="提交" />
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <hr>
+            <p>&copy; 2017 <a href="#" target="_blank">copyright</a></p>
+        </footer>
+
+    </div>
+</div>

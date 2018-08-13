@@ -1,0 +1,18 @@
+<ul class="breadnav clearfix">
+	<li class="bnav-item"><a href="home">首页</a></li>
+	<li class="bnav-item">&lt;</li>
+	<li class="bnav-item"><a ui-sref="food_list">美食系列</a></li>
+	<li class="bnav-item">&lt;</li>
+	<li class="bnav-item"> {{ food_info.food_name }} </li>
+</ul>
+<div class="mei-wrap">
+	<p class="mei-tit">{{ food_info.food_name }}</p>
+	<div class="mei-pic">
+		<!-- <img src="ms-pic3.jpg"/> -->
+		<img ng-src="../Assets/{{ food_info.food_img }}" alt="">
+	</div>
+	<div class="mei-txt" ng-bind-html="food_info.food_content">
+
+	</div>
+	<a ui-sref="food_list" class="meishi-icon">返回列表页</a>
+</div>

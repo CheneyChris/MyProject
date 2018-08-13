@@ -1,0 +1,25 @@
+<div class="clearfix table-wrap" id="tab-span">
+	<span ng-class="{'table-active':shop_active}" ui-sref="shop" class="table-item">全部店面</span>
+	
+	<span ui-sref="shop_region({'region_id':item.region_id})" ng-repeat="item in region_list"
+	 class="table-item">{{item.region_name}}</span>
+
+	<div class="search clearfix">
+		<input class="inp-txt" type="text" name="address" ng-model="shop_name" placeholder="请输入店面名称" />
+		<input ui-sref="shop_name({'shop_name':shop_name})" class="inp-btn" type="button" name="" id="" value="搜索" />
+	</div>
+</div>
+<div id="table-div">
+	<div class="table-pic table-show clearfix">
+		<a ui-sref="shop_detail({'shop_id':item.shop_id})" class="shop-wrap shop-right" ng-repeat="item in shop_list">
+			<span class="shop-pic">
+				<img ng-src="../Assets/{{ item.shop_img }}" alt="" />
+			</span>
+			<p class="shop-tit"> {{ item.shop_id }} {{ item.shop_name }} </p>
+		</a>
+	</div>
+
+	<div style="width:100%;text-align: center;">
+		<ul uib-pagination total-items="totalItems" ng-model="currentPage" items-per-page="bigTotalItems" max-size="maxSize" ng-change="pageChanged()"></ul>
+	</div>	
+</div>

@@ -1,0 +1,14 @@
+<a class="logo" href="javascript:;"></a>
+<ul class="clearfix nav-wrap" id="nav_list">
+    <li><a class="nav-item nav-active" ui-sref="home">首页</a></li>
+    <li><a class="nav-item" ui-sref="article_list({art_id:4})">品牌故事</a></li>
+    <li><a class="nav-item" ui-sref="food_list">美食系列</a></li
+    <li><a class="nav-item" ui-sref="shop">店面展示</a></li>
+    <li><a class="nav-item" ui-sref="news">新闻资讯</a></li>
+    <li><a class="nav-item" ui-sref="about_us">关于我们</a></li>
+</ul>
+<script>
+    $("#nav_list li").click(function(){
+        $(this).children("a").addClass('nav-active').parent("li").siblings().children('a').removeClass('nav-active');
+    });
+</script>

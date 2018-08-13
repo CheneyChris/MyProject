@@ -1,0 +1,59 @@
+<div id="buttons">
+    <span index="1" class="on"></span>
+    <span index="2"></span>
+    <span index="3"></span>
+</div>
+<a href="javascript:;" id="prev" class="arrow">
+    <img src="../Assets/home/img/l.png" />
+</a>
+<a href="javascript:;" id="next" class="arrow">
+    <img src="../Assets/home/img/r.png" />
+</a>
+<div class="banner">
+    <img ng-src="../Assets/{{item.art_img}}" alt="{{item.art_title}}" ng-repeat="item in banner_list" />
+</div>
+<script>
+    setTimeout(() => {
+        // let current = $(".banner img").length;
+        let current = 0;
+        $("#prev").click(() => {
+            $(".banner").animate({
+                "margin-left": "+=100%"
+            },function (){
+                current --;
+                console.log(current);
+                if (current < 0) {
+                    $(".banner").css("margin-left","200%")
+                    current = 3;
+                }
+            }) 
+        })
+
+
+        $("#next").click(() => {
+            $(".banner").animate({
+                "margin-left": "-=100%"
+            },function () {
+                current++; 
+                console.log(current);
+                if (current > 3) {
+                    $(".banner").css("margin-left","0")
+                    current = 0;
+                }
+            });
+        })
+    }, 1000)
+
+
+</script>
+<style>
+    .banner {
+        display: flex;
+        width: 300%;
+    }
+
+    .banner img {
+        flex-basis: 100%;
+        width: 100%;
+    }
+</style>

@@ -1,0 +1,13 @@
+<div class="foot-wrap">
+    <p class="foot-tit">友情链接</p>
+    <ul class="foot-link clearfix">
+        <li class="foot-pic" ng-repeat="item in link_img">
+            <a href="javascript:;"><img ng-src="../Assets/{{item.link_img}}"/></a>
+        </li>
+    </ul>
+    <div class="copyright">
+        <p ng-repeat="item in link_text">
+            {{ item.link_name }}
+        </p>
+    </div>
+</div>

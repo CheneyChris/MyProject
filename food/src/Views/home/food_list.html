@@ -1,0 +1,39 @@
+<ul class="breadnav clearfix">
+	<li class="bnav-item">
+		<a ui-sref="home">首页</a>
+	</li>
+	<li class="bnav-item">&lt;</li>
+	<li class="bnav-item">
+		<a>美食系列</a>
+	</li>
+	<li class="bnav-item">&lt;</li>
+	<li class="bnav-item">
+		<a href="javascript:;">全部菜品 </a>
+	</li>
+</ul>
+<div class="clearfix table-wrap" id="tab-span">
+	<span class="table-item" ui-sref="food_list" ng-class="{'table-active':food_active}">全部菜品</span>
+	
+	<span ng-repeat="item in cate_list" ui-sref="food_cate({fcate_id:item.fcate_id})" ng-class="fcate_id == item.fcate_id?'table-active':''" class="table-item">{{item.fcate_name}}</span>
+	
+	<div class="search clearfix">
+		<input class="inp-txt" type="text" name="address" ng-model="food_name" value="" placeholder="请输入关键字"/>
+		<input class="inp-btn" type="button" name="" id="" ng-sref="food_name({'food_name':food_name})" value="搜索" />
+	</div>
+</div>
+<div id="table-div">
+	<div class="table-pic table-show clearfix">
+		<a ng-repeat="item in food_list" ui-sref="food_info({food_id:item.food_id})" class="ms-wrap">
+			<span class="ms-pic">
+				<img ng-src="../Assets/{{item.food_img}}" alt="" />
+			</span>
+			<h2 class="ms-tit"> {{ item.food_id }}  {{item.food_name}}</h2>
+			<p class="ms-txt">价格：{{item.food_price}}元</p>
+		</a>
+	</div>
+
+	<div style="width:100%;text-align: center;">
+		<ul uib-pagination total-items="totalItems" ng-model="currentPage" items-per-page="bigTotalItems" max-size="maxSize" ng-change="pageChanged()"></ul>
+	</div>
+	
+</div>

@@ -1,0 +1,92 @@
+<style>
+    .newfood-wrap {
+        display: none;
+    }
+
+    .newfood-wrap:nth-child(1) {
+        display: block
+    }
+</style>
+<div class="new-wrap">
+    <p class="newfood-tit">新品推荐</p>
+    <div class="newfood-box clearfix" id="newfood-table">
+        <ul ng-repeat="item in news_food" class="newfood-wrap clearfix newfood-hide">
+            <li style="background:url('../Assets/{{food.food_img}}') center no-repeat;"
+                ng-repeat="food in item"
+                class="newfood-item newfood-right newfood-li1">
+                <a href="meishi-con.html" class="newfood-p1">{{food.food_name}}</a>
+            </li>
+        </ul>
+    </div>
+    <div class="clearfix" id="newfood-span">
+        <span style="background: url(../Assets/home/img/icon-2.png);"></span>
+        <span></span>
+        <span></span>
+    </div>
+</div>
+
+<div class="company-wrap">
+    <p class="company-tit">{{about.art_title}}</p>
+    <dl class="clearfix company-dl">
+        <dt class="company-dt">
+            <img ng-src="../Assets/{{about.art_img}}"/>
+        </dt>
+        <dd class="company-dd" ng-bind-html="about.art_content">
+        </dd>
+    </dl>
+</div>
+
+<div class="news-wrap">
+    <p class="news-tit">新闻资讯</p>
+    <dl class="clearfix news-dl">
+        <dt class="news-dt">
+            <img ng-src="../Assets/{{home_news_one.art_img}}"/>
+        </dt>
+        <dd class="news-dd">
+            <a ng-repeat="item in home_news" class="news-link clearfix">
+                <p class="link-tit">{{item.art_title}}</p>
+                <p class="link-time">{{item.art_time|date:'yyyy-MM-dd'}}</p>
+            </a>
+        </dd>
+    </dl>
+</div>
+
+
+<script type="text/javascript">
+	//导航当前项切换
+	$(".nav-item").click(function () {
+		$(this).parent("li").siblings().children().removeClass("nav-active");
+		//点击对象的父级（li）的兄弟级（li）的子集（a）移除类
+		$(this).addClass("nav-active");
+		//给点击对象添加类
+	});
+	//新品推荐table切换
+	var nSpan = document.getElementById("newfood-span");
+	var newspan = nSpan.querySelectorAll("span");
+	var oUl = document.getElementById("newfood-table");
+	var uls = oUl.querySelectorAll("ul");
+	var last = newspan[0];
+	for (var i = 0; i < newspan.length; i++) {
+		newspan[i].index = i;  //给每一个按钮添加一个自定义属性，存储的是他们对应的索引值；
+		newspan[i].onclick = function () {
+			last.style.background = "url(../Assets/home/img/icon.png)";  //把上一次点击对象的背景更换掉
+			uls[last.index].style.display = "none"; //上一个对应的div，让他隐藏
+			this.style.background = "url(../Assets/home/img/icon-2.png)"; //给当前点击的按钮添加背景
+			uls[this.index].style.display = "block"; //当前点击按钮对应的div显示
+			last = this; 	//把上一次点击的对象更新成当前点击的对象
+		};
+	}
+	;
+</script>
+<script>
+	$(document).ready(function () {
+
+		$(".clearfix span").click(function () {
+			let index = $(this).index();
+			$(this).css("background", "url('../Assets/home/img/icon-2.png')").siblings().removeAttr("style");
+
+			$("#newfood-table ul").eq(index).show().siblings().hide();
+		})
+	})
+
+</script>

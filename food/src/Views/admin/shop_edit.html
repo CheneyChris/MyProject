@@ -1,0 +1,54 @@
+<div class="header">
+    <h1 class="page-title">添加店铺</h1>
+</div>
+<ul class="breadcrumb">
+    <li><a ui-sref="main">Home</a> <span class="divider">/</span></li>
+    <li class="active">添加店铺</li>
+</ul>
+<div class="container-fluid">
+    <div class="row-fluid">
+
+        <div class="btn-toolbar">
+            <button class="btn btn-primary" type="button" ui-sref="shop_list"><i class="icon-list"></i>返回店面列表</button>
+            <div class="btn-group">
+            </div>
+        </div>
+
+        <div class="well">
+            <div id="myTabContent" class="tab-content">
+                <div class="tab-pane active in" id="home">
+                    <form>
+                        <label>店铺名称</label>
+                        <input type="text" ng-model="shop.shop_name" value="" class="input-xxlarge" placeholder="请输入食品名称" required>
+                        <label>所属分类</label>
+                        <select name="cate" class="input-xlarge"ng-model="shop.region_id">
+                            <option ng-repeat="item in shop_region" value="{{item.region_id}}">{{item.region_name}}</option>
+                        </select>
+                        <label>号码</label>
+                        <input type="text" ng-model="shop.shop_phone" value="" class="input-xxlarge" required>
+
+                        <label>邮编</label>
+                        <input type="text" ng-model="shop.shop_fax" value="" class="input-xxlarge" required>
+
+                        <label>地址</label>
+                        <input type="text" ng-model="shop.shop_address" value="" class="input-xxlarge" required>
+
+                        <label>食品图片</label>
+                        <div class="button" ng-change="uploadImg()" ngf-select="" ngf-pattern="'image/*'" ngf-multiple="false" ng-model="shop.shop_img">
+                            <button type="button" class="am-btn am-btn-primary am-btn-xs">选择文件</button>
+                        </div>
+                        <img ng-src="../Assets/{{shop.shop_img}}" />
+                        <label></label>
+                        <input type="button" class="btn btn-primary" ng-click="saveForm()" value="提交" />
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <hr>
+            <p>&copy; 2017 <a href="#" target="_blank">copyright</a></p>
+        </footer>
+
+    </div>
+</div>

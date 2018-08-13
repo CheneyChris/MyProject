@@ -1,0 +1,26 @@
+<div class="header">
+    <h1 class="page-title">后台首页</h1>
+</div>
+<ul class="breadcrumb">
+    <li><a ui-sref="main">Home</a> <span class="divider">/</span></li>
+    <li class="active">Index</li>
+</ul>
+
+<div class="container-fluid">
+
+    <div class="row">
+        <ul>
+            <li>PHP版本：{{system.PHP_VERSION}}</li>
+            <li>当前操作系统：{{system.PHP_OS}}</li>
+            <li>MySql版本信息：{{system.mysql_version}}</li>
+        </ul>
+    </div>
+
+
+    <div class="row-fluid">
+        <footer>
+            <hr>
+            <p>&copy; 2017 <a href="#" target="_blank">copyright</a></p>
+        </footer>
+    </div>
+</div>

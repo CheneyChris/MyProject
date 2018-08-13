@@ -1,0 +1,76 @@
+<div class="header">
+    <h1 class="page-title">地区分类列表</h1>
+</div>
+<ul class="breadcrumb">
+    <li>
+        <a ui-sref="home">Home</a>
+        <span class="divider">/</span>
+    </li>
+    <li class="active">List</li>
+</ul>
+
+<div class="container-fluid">
+    <div class="row-fluid">
+
+        <div class="btn-toolbar">
+            <button class="btn btn-primary" ui-sref="company_add">
+                <i class="icon-plus"></i>添加公司</button>
+            <div class="btn-group">
+            </div>
+        </div>
+        <div class="well">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>公司名称</th>
+                        <th>公司地址</th>
+                        <th>公司电话</th>
+                        <th>公司传真</th>
+                        <th>邮编</th>
+                        <th>成立时间</th>
+                        <th>操作</th>
+                        <th style="width: 26px;"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in company_list">
+                        <td> {{ item.company_name }} </td>
+                        <td> {{ item.company_phone}} </td>
+                        <td> {{ item.company_address}} </td>
+                        <td> {{ item.company_fax}} </td>
+                        <td> {{ item.company_email_code}} </td>
+                        <td> {{ item.company_time*1000 | date:"yyyy-mm-dd" }} </td>
+                        <td>
+                            <a ui-sref="company_edit({'company_id':item.company_id})">
+                                <i class="icon-pencil"></i>
+                            </a>
+                            <a href="#myModal" ng-click="company_delete(item.company_id)" role="button" data-toggle="modal">
+                                <i class="icon-remove"></i>
+                            </a>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="pagination">
+            <ul uib-pagination total-items="totalItems" ng-model="currentPage" items-per-page="bigTotalItems" max-size="maxSize" ng-change="pageChanged()"></ul>
+        </div>
+
+        <div class="modal small hide fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 id="myModalLabel">Delete Confirmation</h3>
+            </div>
+            <div class="modal-body">
+                <p class="error-text">
+                    <i class="icon-warning-sign modal-icon"></i>Are you sure you want to delete the user?</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+                <button class="btn btn-danger" ui-sref="company_delete({'company_id':company_id})" data-dismiss="modal">Delete</button>
+            </div>
+        </div>
+
+    </div>
+</div>

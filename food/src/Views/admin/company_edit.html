@@ -1,0 +1,58 @@
+<div class="header">
+    <h1 class="page-title">添加食品</h1>
+</div>
+<ul class="breadcrumb">
+    <li>
+        <a ui-sref="main">Home</a>
+        <span class="divider">/</span>
+    </li>
+    <li class="active">添加食品</li>
+</ul>
+<div class="container-fluid">
+    <div class="row-fluid">
+
+        <div class="btn-toolbar">
+            <button class="btn btn-primary" type="button" ui-sref="food_list">
+                <i class="icon-list"></i>返回食品列表页面</button>
+            <div class="btn-group">
+            </div>
+        </div>
+
+        <div class="well">
+            <div id="myTabContent" class="tab-content">
+                <div class="tab-pane active in" id="home">
+                    <form>
+                        <label>公司名称</label>
+                        <input type="text" ng-model="company.company_name" value="" class="input-xxlarge" placeholder="请输入食品名称" required>
+                        <label>号码</label>
+                        <input type="text" ng-model="company.company_phone" value="" class="input-xxlarge" required>
+                        <label>公司传真</label>
+                        <input type="text" ng-model="company.company_fax" class="input-xxlarge" required>
+
+                        <label>公司地址</label>
+                        <input type="text" ng-model="company.company_address" class="input-xxlarge" required>
+                        <label>公司邮编</label>
+                        <input type="text" ng-model="company.company_email_code" class="input-xxlarge" required>
+
+                        <label>公司图片</label>
+                        <div class="button" ng-change="uploadImg()" ngf-select="" ngf-pattern="'image/*'" ngf-multiple="false" ng-model="company.company_img">
+                            <button type="button" class="am-btn am-btn-primary am-btn-xs">选择文件</button>
+                        </div>
+                        <img ng-src="../Assets/{{company.company_img}}" />
+
+                        <label></label>
+                        <input type="button" class="btn btn-primary" ng-click="saveForm()" value="提交" />
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <hr>
+            <p>&copy; 2017
+                <a href="#" target="_blank">copyright</a>
+            </p>
+        </footer>
+
+    </div>
+</div>

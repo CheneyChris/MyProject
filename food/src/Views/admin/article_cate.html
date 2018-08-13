@@ -1,0 +1,67 @@
+<div class="header">
+    <h1 class="page-title">文章列表</h1>
+</div>
+<ul class="breadcrumb">
+    <li>
+        <a ui-sref="home">Home</a>
+        <span class="divider">/</span>
+    </li>
+    <li class="active">List</li>
+</ul>
+
+<div class="container-fluid">
+    <div class="row-fluid">
+
+        <div class="btn-toolbar">
+            <button class="btn btn-primary" ui-sref="article_cate_add">
+                <i class="icon-plus"></i>添加文章分类</button>
+            <div class="btn-group">
+            </div>
+        </div>
+        <div class="well">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>文章标题</th>
+                        <th style="width: 26px;"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in cate_list">
+                        <td> {{ item.artcate_id }} </td>
+                        <td> {{ item.artcate_name }} </td>
+                        <td>
+                            <a ui-sref="article_cate_add">
+                                <i class="icon-pencil"></i>
+                            </a>
+                            <a href="#myModal" ng-click="CateDelete(item.artcate_id)" role="button" data-toggle="modal">
+                                <i class="icon-remove"></i>
+                            </a>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="pagination">
+
+        </div>
+
+        <div class="modal small hide fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 id="myModalLabel">Delete Confirmation</h3>
+            </div>
+            <div class="modal-body">
+                <p class="error-text">
+                    <i class="icon-warning-sign modal-icon"></i>Are you sure you want to delete the user?</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+                <button class="btn btn-danger" ui-sref="art_cate_delete({'artcate_id':artcate_id})" data-dismiss="modal">Delete</button>
+            </div>
+        </div>
+
+    </div>
+</div>

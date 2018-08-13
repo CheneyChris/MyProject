@@ -1,0 +1,49 @@
+<div class="header">
+    <h1 class="page-title">系统配置</h1>
+</div>
+<ul class="breadcrumb">
+    <li><a ui-sref="main">Home</a> <span class="divider">/</span></li>
+    <li class="active">系统配置</li>
+</ul>
+<div class="container-fluid">
+    <div class="row-fluid">
+
+        <div class="btn-toolbar">
+            <button class="btn btn-primary" type="button" ui-sref="main"><i class="icon-list"></i>返回首页</button>
+            <div class="btn-group">
+            </div>
+        </div>
+
+        <div class="well">
+            <div id="myTabContent" class="tab-content">
+                <div class="tab-pane active in" id="home">
+                    <form>
+                        <label>网站名称</label>
+                        <input type="text" ng-model="conf.conf_name" value="" class="input-xxlarge" required>
+                        <label>版权</label>
+                        <input type="text" ng-model="conf.conf_copyright" value="" class="input-xxlarge" required>
+                        <label>邮箱</label>
+                        <input type="text" ng-model="conf.conf_email" value="" class="input-xxlarge" required>
+                        <label>电话号码</label>
+                        <input type="text" ng-model="conf.conf_phone" value="" class="input-xxlarge" required>
+                        <label>网站图片</label>
+                        <div class="button" ng-change="uploadImg()" ngf-select="" ngf-pattern="'image/*'" ngf-multiple="false" ng-model="conf.conf_img">
+                            <button type="button" class="am-btn am-btn-primary am-btn-xs">选择文件</button>
+                        </div>
+                        <img ng-src="../Assets/{{conf.conf_img}}" />
+                        <label>网站描述内容</label>
+                        <textarea ng-model="conf.conf_content" value="" rows="3" class="input-xxlarge" required></textarea>
+                        <label></label>
+                        <input type="button" class="btn btn-primary" ng-click="saveForm()" value="提交" />
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <hr>
+            <p>&copy; 2017 <a href="#" target="_blank">copyright</a></p>
+        </footer>
+
+    </div>
+</div>

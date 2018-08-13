@@ -1,0 +1,84 @@
+<div class="header">
+    <h1 class="page-title">店面列表</h1>
+</div>
+<ul class="breadcrumb">
+    <li>
+        <a ui-sref="main">Home</a>
+        <span class="divider">/</span>
+    </li>
+    <li class="active">List</li>
+</ul>
+
+<div class="container-fluid">
+    <div class="row-fluid">
+
+        <div class="btn-toolbar">
+            <button class="btn btn-primary" ui-sref="shop_add">
+                <i class="icon-plus"></i>添加店面</button>
+            <div class="btn-group">
+            </div>
+        </div>
+        <div class="well">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>店铺名称</th>
+                        <th>号码</th>
+                        <th>地址</th>
+                        <th>所属地区</th>
+                        <th>邮编</th>
+                        <th>店铺图片</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in shop_list">
+                        <td> {{ item.shop_id }} </td>
+                        <td> {{ item.shop_name }} </td>
+                        <td> {{ item.shop_phone }} </td>
+                        <td> {{ item.shop_address }} </td>
+                        <td> {{ item.region_name }} </td>
+                        <td> {{ item.shop_fax }} </td>
+                        <td><img style="height:100px" ng-src="../Assets/{{ item.shop_img }}" alt=""></td>
+                        <td>
+                            <a ui-sref="shop_edit({'shop_id':item.shop_id})">
+                                <i class="icon-pencil"></i>
+                            </a>
+                            <a href="#myModal" ng-click="deleteFood(item.food_id)" role="button" data-toggle="modal">
+                                <i class="icon-remove"></i>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="pagination">
+            <ul uib-pagination total-items="totalItems" ng-model="currentPage" items-per-page="bigTotalItems" max-size="maxSize" ng-change="pageChanged()"></ul>
+        </div>
+
+        <div class="modal small hide fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 id="myModalLabel">Delete Confirmation</h3>
+            </div>
+            
+
+            <div class="modal-body">
+                <p class="error-text">
+                    <i class="icon-warning-sign modal-icon"></i>Are you sure you want to delete the user?</p>
+            </div>
+
+            <!-- 删除按钮 -->
+            <div class="modal-footer">
+                <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+
+                <button type="button" ui-sref="food_delete({'food_id':food_id})" class="btn btn-danger" data-dismiss="modal">Delete</button>
+            </div>
+
+        </div>
+
+    </div>
+</div>

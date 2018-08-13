@@ -1,0 +1,59 @@
+<div class="header">
+    <h1 class="page-title">添加食品</h1>
+</div>
+<ul class="breadcrumb">
+    <li>
+        <a ui-sref="main">Home</a>
+        <span class="divider">/</span>
+    </li>
+    <li class="active">添加食品</li>
+</ul>
+<div class="container-fluid">
+    <div class="row-fluid">
+
+        <div class="btn-toolbar">
+            <button class="btn btn-primary" type="button" ui-sref="food_list">
+                <i class="icon-list"></i>返回食品列表页面</button>
+            <div class="btn-group">
+            </div>
+        </div>
+
+        <div class="well">
+            <div id="myTabContent" class="tab-content">
+                <div class="tab-pane active in" id="home">
+                    <form>
+                        <label>食品名称</label>
+                        <input type="text" ng-model="food.food_name" value="" class="input-xxlarge" placeholder="请输入食品名称" required>
+                        <label>所属分类</label>
+                        <select name="cate" class="input-xlarge" ng-model="food.fcate_id">
+                            <option ng-repeat="item in cate_list" value="{{item.fcate_id}}">{{item.fcate_name}}</option>
+                        </select>
+                        <label>食品价格</label>
+                        <input type="text" ng-model="food.food_price" value="" class="input-xxlarge" required>
+                        <label>选择时间</label>
+                        <input type="date" ng-model="food.food_time" class="input-xxlarge" required>
+
+                        <label>食品图片</label>
+                        <div class="button" ng-change="uploadImg()" ngf-select="" ngf-pattern="'image/*'" ngf-multiple="false" ng-model="food.food_img">
+                            <button type="button" class="am-btn am-btn-primary am-btn-xs">选择文件</button>
+                        </div>
+
+                        <img ng-src="../Assets/{{food.food_img}}" />
+                        <label>食品介绍</label>
+                        <textarea ng-model="food.food_content" value="" rows="3" class="input-xxlarge" required></textarea>
+                        <label></label>
+                        <input type="button" class="btn btn-primary" ng-click="saveForm()" value="提交" />
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <hr>
+            <p>&copy; 2017
+                <a href="#" target="_blank">copyright</a>
+            </p>
+        </footer>
+
+    </div>
+</div>

@@ -1,0 +1,25 @@
+<div class="navbar">
+    <div class="navbar-inner">
+        <a class="brand" href="index.html">
+            <span class="second">Admin</span>
+        </a>
+    </div>
+</div>
+
+<div class="row-fluid">
+    <div class="dialog">
+        <div class="block">
+            <p class="block-heading">登录</p>
+            <div class="block-body">
+                <form>
+                    <label>Username</label>
+                    <input type="text" class="span12" ng-model="admin.admin_name">
+                    <label>Password</label>
+                    <input type="password" class="span12" ng-model="admin.admin_pwd">
+                    <a ng-click="login()" class="btn btn-primary pull-right">登录</a>
+                    <div class="clearfix"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
