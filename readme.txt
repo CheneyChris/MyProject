@@ -1,1 +1,1 @@
-This is a simple practise
+Some projects and cases that I have done myself.
