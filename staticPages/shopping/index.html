@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="css/login.css">
 </head>
 
-<body style="height: 100%; overflow:hidden">
+<body style="height: 100%; overflow:hidden; padding-top: 0px;">
 <div class="login">
     <div class="login_main">
         <div class="login_title">
@@ -22,7 +22,7 @@
         <div class="login_import">
             <input type="text" name="" placeholder="Username">
             <input type="password" name="" placeholder="Password">
-            <button><a href="page/shop.html">Login</a></button>
+            <button id="button"><a href="page/shop.html">Login</a></button>
             <p>Forgot Password?</p>
         </div>
     </div>
@@ -37,5 +37,11 @@
     </footer>
 </div>
 </body>
+<script>
+    let button = document.querySelector("#button");
+    button.onclick = function () {
+        window.location.href = 'page/shop.html';
+    }
+</script>
 
 </html>
