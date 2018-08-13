@@ -96,7 +96,7 @@ input[id="btn_2"]:checked ~ .banner_img .li_2 {
 .game_descript_one,
 .game_descript_two{
 	width: 100%;
-	padding-top: 30px;
+	padding-top: 120px;
 	padding-bottom: 40px;
 	font-family: YaHei;
 	clear: both;
