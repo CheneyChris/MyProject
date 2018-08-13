@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/lufylegend-1.10.1.min.js"></script>
+    <script src="js/lufylegend.ui.js"></script>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            font-size: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="gameframes"></div>
+</body>
+</html>
+<script>
+    window.onresize = function(){
+        LGlobal.stageScale = LStageScaleMode.SHOW_ALL;
+        LGlobal.screen(LStage.FULL_SCREEN);
+    }
+</script>
+<script>
+
+    //定义图片资源
+    var imgDataSource = [
+        {path:"./images/o_hero.png",name:"hero1"},
+        {path:"./images/o_hero1.png",name:"hero2"},
+        {path:"./images/o_startbg.png",name:"startBg"},
+        {path:"./images/o_overbg.png",name:"gameOver"},
+        {path:"./images/o_gameover.png",name:"gameOverText"},
+        {path:"./images/o_bullet.png",name:"bullet"},
+        {path:"./images/o_bullet1.png",name:"bullet1"},
+        {path:"./images/o_bullet2.png",name:"bullet2"},
+        {path:"./images/o_enemy.png",name:"enemy"},
+        {path:"./images/boom.png",name:"boom"},
+        {path:"./images/o_gamebg0.png",name:"cloud1"},
+        {path:"./images/o_gamebg1.png",name:"cloud2"},
+        {path:"./images/o_startNormal.png",name:"startBtn1"},
+        {path:"./images/o_startSelected.png",name:"startBtn2"}
+    ];
+    
+    //-----------------变量的声明-----------------
+
+    //图片数据、游戏开始背景层、游戏开始战斗层、子弹层、敌人层
+    var imgData,gameStartBgLayer,startBattleLayer,bulletLayer,enemyLayer;
+
+    //英雄和敌人的移动速度
+    var hero,heroRunSpeed = 20,enemyRunSpeed = 15;
+
+    //子弹飞行速度 以及子弹发射间隔
+    var bulletSpeed = 60 ,bulletShootTime = 1 ,bulletShowIndex = 0;
+
+    //敌人出现的间隔
+    var enemyShowTime = 20,enemyShowIndex = 0;
+
+    //计分板变量 杀敌数  英雄HP
+    var scorecardLayer,kills=0,heroHP=3;
+
+    //游戏结束层
+    var gameOverLayer;
+    
+    
+    //-----------------游戏初始化-----------------
+
+    //游戏开始的初始化
+    LInit(50,'gameframes',850,480,main);
+
+    //所有游戏数据初始化
+    function initGameData(){
+        kills=0,heroHP=3;
+    }
+    //游戏开始的初始化函数
+    function main(){
+        LGlobal.stageScale = LStageScaleMode.SHOW_ALL;
+        LGlobal.screen(LStage.FULL_SCREEN);
+        //先整个进度条层
+        loadingLayer = new LoadingSample5();
+        //把进度条层加入舞台让进度条层显示出来
+        addChild(loadingLayer);
+        //加载游戏数据，显示进度条，加载完成后要干嘛
+        LLoadManage.load(
+            imgDataSource, //要载入的图片数据
+            function(progress){   
+                loadingLayer.setProgress(progress);  //告诉进度条层当前加载到哪里了。
+            },
+            gameStart //加载完成后，就调用gameStart函数
+        );
+
+        
+    }   
+
+
+    //-----------------游戏第一个场景----------------- gameStartBgLayer 层
+    //游戏开始
+    function gameStart(getLoadData){
+        // if()
+        removeChild(loadingLayer); //把之前的进度条层删除掉
+        
+        imgData = getLoadData;  //加载完成后，拿到的结果给imgData
+        
+        //设置游戏背景层
+        gameStartBgLayer = new LSprite(); 
+        addChild(gameStartBgLayer); 
+        setGameStartBg();  
+
+        //设置选择英雄层
+        setSelectHero();
+
+        //设置开始按钮层
+        setGameStartBtn();
+
+    }
+
+    //给游戏开始背景层设置具体的图片
+    function setGameStartBg(){
+
+        //LBitmapData可以理解为去遍历imgDataSource后得到的一个对象
+        var bitmapData = new LBitmapData(imgData['startBg']);
+        
+        //然后通过LBitmap得到具体的图片
+        var bitmap = new LBitmap(bitmapData);
+
+        //最后给游戏开始背景层添加具体的图片
+        gameStartBgLayer.addChild(bitmap);
+    }
+
+    //-----------------选择英雄-----------------
+
+    //设置选择英雄的层以及相应触发事件
+    function setSelectHero(){
+        //设置英雄图片的位置
+        var atBottomOfHeight = 280;
+        var LeftOffset = 120;
+        var betweenDir = 20;
+
+        //获取图片
+        var bitmapData1 = new LBitmapData(imgData['hero1']);
+        var bitmapData2 = new LBitmapData(imgData['hero2']);
+        var bitmap1 = new LBitmap(bitmapData1);
+        var bitmap2 = new LBitmap(bitmapData2);
+
+        //设置图片位置
+        bitmap1.y = LGlobal.height - bitmap1.getHeight()-atBottomOfHeight;
+        bitmap1.x = LGlobal.width/2 - bitmap1.getWidth()/2 - LeftOffset;
+
+        bitmap2.y = LGlobal.height - bitmap2.getHeight()-atBottomOfHeight;
+        bitmap2.x = LGlobal.width/2 - bitmap2.getWidth()/2 + bitmap1.getWidth() + betweenDir - LeftOffset;
+
+        //添加图片到选择英雄层上
+        var selectHero1Layer = new LSprite();
+        var selectHero2Layer = new LSprite();
+        selectHero1Layer.addChild(bitmap1);
+        selectHero2Layer.addChild(bitmap2);
+
+        //把选择英雄层添加到背景层
+        gameStartBgLayer.addChild(selectHero1Layer);
+        gameStartBgLayer.addChild(selectHero2Layer);
+
+        //设置事件
+        addSelectHeroEvent(bitmap1,bitmap2,selectHero1Layer,selectHero2Layer);
+    }
+    
+    //有 hero1  hero2 等枚举信息
+    var selectHero = "";
+    //给选中英雄层添加事件
+    function addSelectHeroEvent(selectHero1bitmap,selectHero2bitmap,selectHero1Layer,selectHero2Layer){
+        //当鼠标移动到英雄图片上的时候，英雄图片有放大提示的功能
+        selectHero1Layer.addEventListener(LMouseEvent.MOUSE_OVER,function(){
+            selectHero1bitmap.scaleX = 1.2;
+            selectHero1bitmap.scaleY = 1.2;
+        });
+        selectHero1Layer.addEventListener(LMouseEvent.MOUSE_OUT,function(){
+            selectHero1bitmap.scaleX = 1;
+            selectHero1bitmap.scaleY = 1;
+        });
+        selectHero2Layer.addEventListener(LMouseEvent.MOUSE_OVER,function(){
+            selectHero2bitmap.scaleX = 1.2;
+            selectHero2bitmap.scaleY = 1.2;
+        });
+        selectHero2Layer.addEventListener(LMouseEvent.MOUSE_OUT,function(){
+            selectHero2bitmap.scaleX = 1;
+            selectHero2bitmap.scaleY = 1;
+        });
+      
+        //当第一个英雄被点击的时候 
+        selectHero1Layer.addEventListener(LMouseEvent.MOUSE_DOWN,function(){
+            //用于解决当第一个英雄被点击后，图片放大，但是鼠标移开后，图片缩小的BUG
+            selectHero1Layer.removeEventListener(LMouseEvent.MOUSE_OUT); 
+
+            //第一个英雄图片放大，第二个英雄图片缩小
+            selectHero1bitmap.scaleX = 1.2;
+            selectHero1bitmap.scaleY = 1.2;
+            
+            selectHero = "hero1";
+            
+            selectHero2bitmap.scaleX = 1;
+            selectHero2bitmap.scaleY = 1;
+
+            //用于解决当点击第二个英雄的时候，再点第一个英雄，鼠标再回到第二个英雄的时候，第二个英雄没有放大提示的BUG
+            selectHero2Layer.removeEventListener(LMouseEvent.MOUSE_OUT);  
+            selectHero2Layer.addEventListener(LMouseEvent.MOUSE_OUT,function(){
+                selectHero2bitmap.scaleX = 1;
+                selectHero2bitmap.scaleY = 1;
+            });
+        });
+        
+
+        //第二个英雄被点击的时候
+        selectHero2Layer.addEventListener(LMouseEvent.MOUSE_DOWN,function(){
+            selectHero2Layer.removeEventListener(LMouseEvent.MOUSE_OUT); 
+            selectHero1bitmap.scaleX = 1;
+            selectHero1bitmap.scaleY = 1;
+            
+            selectHero2bitmap.scaleX = 1.2;
+            selectHero2bitmap.scaleY = 1.2;
+
+            selectHero = "hero2";
+
+            selectHero1Layer.removeEventListener(LMouseEvent.MOUSE_OUT); 
+            selectHero1Layer.addEventListener(LMouseEvent.MOUSE_OUT,function(){
+                selectHero1bitmap.scaleX = 1;
+                selectHero1bitmap.scaleY = 1;
+            });
+        });
+        
+    }
+
+    //-----------------设置按钮-----------------
+    //设置游戏开始按钮
+    function setGameStartBtn(){
+        //按钮位置
+        var btnLeftOffset = 0;
+        var btnTopOffset = 0;
+
+        //获取图片
+        var bitmapData1 = new LBitmapData(imgData['startBtn1']);
+        var bitmap1 = new LBitmap(bitmapData1);
+        var bitmapData2 = new LBitmapData(imgData['startBtn2']);
+        var bitmap2 = new LBitmap(bitmapData2);
+        
+        //设置图片居中
+        bitmap1.x = LGlobal.width/2 - bitmap1.getWidth()/2 + btnLeftOffset;
+        bitmap1.y = LGlobal.height/2 + bitmap1.getHeight()/2 + btnTopOffset;
+
+        bitmap2.x = LGlobal.width/2 - bitmap2.getWidth()/2 + btnLeftOffset;
+        bitmap2.y = LGlobal.height/2 + bitmap2.getHeight()/2 + btnTopOffset;
+
+        //最后添加图片到层上
+        var gameStartBtnLayer = new LSprite();
+        gameStartBtnLayer.addChild(bitmap1);
+        gameStartBgLayer.addChild(gameStartBtnLayer);
+        addGameStartBtnEvent(bitmap1,bitmap2,gameStartBtnLayer);
+    }
+
+    //给游戏开始按钮添加事件
+    function addGameStartBtnEvent(gameStartBtn1,gameStartBtn2,gameStartBtnLayer){
+        //当鼠标移动到按钮上的时候，做一些样式的改变
+        gameStartBtnLayer.addEventListener(LMouseEvent.MOUSE_OVER,function(){
+            gameStartBtnLayer.removeChild(gameStartBtn1);
+            gameStartBtnLayer.addChild(gameStartBtn2);
+        });
+        gameStartBtnLayer.addEventListener(LMouseEvent.MOUSE_OUT,function(){
+            gameStartBtnLayer.removeChild(gameStartBtn2);
+            gameStartBtnLayer.addChild(gameStartBtn1);
+        });
+
+        //当鼠标按下的时候，固定样式，并且进入下一个游戏场景
+        gameStartBtnLayer.addEventListener(LMouseEvent.MOUSE_DOWN,function(){
+            //改变按钮的样式
+            gameStartBtnLayer.removeChild(gameStartBtn1);
+            gameStartBtnLayer.addChild(gameStartBtn2);
+            gameStartBtnLayer.removeEventListener(LMouseEvent.MOUSE_OUT)
+
+            //游戏开始，并且进入下一个场景
+            if(selectHero!=""){
+                var scrollPicture = setInterval(function(){
+                    gameStartBgLayer.y -= 10;
+                    // console.log(LGlobal.height);
+                    if(gameStartBgLayer.y <= -LGlobal.height)
+                    {   
+                        clearInterval(scrollPicture);
+                        //进入下一个场景
+                        startBattle();
+                    }
+                },5);
+            }else{
+                alert("请选择你的英雄！");
+
+                //重置按钮样式
+                gameStartBtnLayer.removeChild(gameStartBtn2);
+                gameStartBtnLayer.addChild(gameStartBtn1);
+
+                gameStartBtnLayer.addEventListener(LMouseEvent.MOUSE_OUT,function(){
+                    gameStartBtnLayer.removeChild(gameStartBtn2);
+                    gameStartBtnLayer.addChild(gameStartBtn1);
+                });
+            }
+        });
+    }
+
+    //-----------------第二场景----------------- startBattleLayer 层
+    //开始战斗
+    function startBattle(){
+
+        //删除之前的层
+        removeChild(gameStartBgLayer);
+
+        //创建一个新战斗游戏背景
+        startBattleLayer = new LSprite();
+        addChild(startBattleLayer);
+
+        //创建子弹层
+        bulletLayer = new LSprite();
+        // startBattleLayer.addChild(bulletLayer);
+
+        //创建敌人层
+        enemyLayer = new LSprite();
+        
+        //创建计分板层
+        scorecardLayer = new LSprite();
+
+        //设置云的飘动
+        cloudInFlutter();
+
+        //添加英雄
+        addHero();
+        
+        //添加敌人
+        addEnemy();
+        
+        //添加事件
+        addEvent();
+
+    }
+
+    //设置云的飘动
+    function cloudInFlutter(){
+        var flutterSpeed = 50;
+        //云的层
+        var cloudLayer = new LSprite();
+        startBattleLayer.addChild(cloudLayer);
+        
+        //获取云的图片
+        var bitmapData1 = new LBitmapData(imgData['cloud1']);
+        var bitmap1 = new LBitmap(bitmapData1);
+        
+        var bitmapData2 = new LBitmapData(imgData['cloud2']);
+        var bitmap2 = new LBitmap(bitmapData2);
+
+        //第一个云在前，第二个云在后，接着让整个云层向左侧移动，当第一个云全部超出屏幕左侧的时候，把第一个云放到第二个云的后面，同时云层的X轴归零。第二个云同理。
+
+        //设置云的位置
+        bitmap2.x = bitmap1.getWidth();
+
+        cloudLayer.addChild(bitmap1);
+        cloudLayer.addChild(bitmap2);
+        
+        //让云飘动
+        var flutter = setInterval(function(){
+            //让云层向左侧移动
+            bitmap1.x -= 10;
+            bitmap2.x -= 10;
+
+            //当一个云超出屏幕左侧的时候，放到第二个云后面
+            if(bitmap1.x <= -bitmap1.width){
+                bitmap1.x = bitmap2.x + bitmap2.getWidth();
+            }
+            if(bitmap2.x <= -bitmap2.width){
+                bitmap2.x = bitmap1.x + bitmap1.getWidth();
+            }
+            if(heroHP <= 0) //游戏结束时终止云的飘动
+            {
+                clearInterval(flutter);
+            }
+        },flutterSpeed);
+    }
+
+    //-----------------设置英雄----------------- 
+    //英雄类
+    function Hero(){
+        base(this,LSprite,[]);
+        var self = this;
+
+        //判断玩家选择的英雄是1号还是2号
+        if(selectHero == "hero1"){
+            //获取英雄1号的图片
+            var bitmapData1 = new LBitmapData(imgData['hero1']);
+            var bitmap1 = new LBitmap(bitmapData1);
+            
+            self.bitmap = bitmap1;
+            self.addChild(self.bitmap);
+        }else if(selectHero == "hero2"){
+            //获取英雄2号的图片
+            var bitmapData2 = new LBitmapData(imgData['hero2']);
+            var bitmap2 = new LBitmap(bitmapData2);
+
+            self.bitmap = bitmap2;
+            self.addChild(self.bitmap);
+        }
+    }
+    //英雄移动
+    Hero.prototype.run = function(){
+        var self = this;
+
+        //当松开键盘的时候，让英雄不动
+        if (self.runMode == "static"){
+                self.x = self.x;
+                self.y = self.y;
+        }
+        
+        //判断按下的键有哪些，并且移动
+        keyCodeArry.forEach(element => {
+            if(element == "K"){
+                if(self.y > 5)
+                    self.y -= heroRunSpeed;
+            }
+            else if(element == "J"){
+                if(self.y < LGlobal.height - self.bitmap.getHeight())
+                self.y += heroRunSpeed;
+            }
+            else if(element == "H"){
+                if(self.x > 0)
+                self.x -= heroRunSpeed;
+            }
+            else if(element == "L"){
+                if(self.x < LGlobal.width - self.bitmap.getWidth())
+                self.x += heroRunSpeed;
+            } 
+        });
+    }
+    //英雄攻击
+    Hero.prototype.shoot = function(){
+        var self = this;
+        var bullet = new Bullet();
+        
+        //设置子弹初始位置
+        bullet.x = self.x + self.bitmap.getWidth()/2;
+        bullet.y = self.y + (self.bitmap.getHeight())/2;
+
+        //子弹添加到子弹层
+        bulletLayer.addChild(bullet);
+        startBattleLayer.addChild(bulletLayer);
+
+        //让子弹飞
+        bullet.run();
+
+    }
+    //添加英雄
+    function addHero(){
+
+        //添加英雄
+        hero = new Hero();
+        //设置位置
+        hero.y = LGlobal.height/2 - hero.bitmap.getHeight()/2;
+        startBattleLayer.addChild(hero);
+        
+    }
+    //控制英雄事件
+    function controlHeroKeyDownEvent(e){
+        //获取英雄移动方向的按键集合
+        keyCodeArry = addKeyCodeArry(e.keyCode,keyCodeArry);
+        console.log(e.keyCode);
+	    // 74 j 发送子弹  70 f
+        if(e.keyCode == 70){
+            hero.shoot();
+        }
+
+    }
+    function controlHeroKeyUpEvent(e){
+        //获取英雄移动方向的按键集合
+        keyCodeArry = deletKeyCodeArry(e.keyCode,keyCodeArry);
+        // 87 w  83 s     65 a   68 d
+        // 75 k  74 j     72 h   76 l  Vim 模式的上下左右
+        if(e.keyCode === 75 || e.keyCode === 74 || e.keyCode === 72 || e.keyCode === 76){
+            hero.runMode = "static";
+        }
+        // 74 j 发送子弹  70 f
+        if(e.keyCode == 70){
+            isShoot = false;
+        }
+    }
+    
+    //子弹类
+    function Bullet(){
+        base(this,LSprite,[]);
+        var self = this;
+        self.mode = "";
+        if(selectHero == "hero1"){
+            var bitmapData1 = new LBitmapData(imgData['bullet1']);
+            var bitmap1 = new LBitmap(bitmapData1);
+            self.bitmap = bitmap1;
+            self.addChild(self.bitmap);
+        }else if(selectHero == "hero2"){
+            var bitmapData2 = new LBitmapData(imgData['bullet2']);
+            var bitmap2 = new LBitmap(bitmapData2);
+            self.bitmap = bitmap2;
+            self.addChild(self.bitmap);
+        }
+    }
+    //子弹飞
+    Bullet.prototype.run = function(){
+        var self = this;
+        
+        //让子弹飞
+        var bulletRun = setInterval(function(){
+            self.x += 10;
+            //检测子弹有没有撞到敌人
+            if(self.isHit()){
+                kills+=1;
+                clearInterval(bulletRun);
+            }else if(self.x > LGlobal.width + self.bitmap.getWidth())//如果没有撞到敌人，子弹飞出屏幕外就销毁
+            {
+                clearInterval(bulletRun);
+                startBattleLayer.removeChild(self);
+            }
+        },1000/bulletSpeed);
+    }
+    //检测子弹是否有撞击到敌人或者飞出屏幕外
+    Bullet.prototype.isHit = function (){
+        var self = this;
+        var ishit = false;
+        //检测子弹有没有撞到敌人
+        if(enemyLayer.childList.length>0){
+            enemyLayer.childList.forEach(enemy => {
+                if(LGlobal.hitTestRect(self,enemy,[self.bitmap.getWidth(),self.bitmap.getHeight()],[enemy.bitmap.getWidth(),enemy.bitmap.getHeight()])){
+
+                    //让子弹消失
+                    bulletLayer.removeChild(self);
+                    startBattleLayer.addChild(bulletLayer);
+
+                    //让敌人消失
+                    enemyLayer.removeChild(enemy);
+                    startBattleLayer.addChild(enemyLayer);
+                    
+                    //生成爆炸特效
+                    createBoom(enemy);
+                    
+
+                    ishit =  true;
+                }
+            });
+        }
+        return ishit;
+    }
+    
+    //爆炸特效类
+    function Boom(){
+        base(this,LSprite,[]);
+        var self = this;        
+        self.bitmap = new LBitmap(new LBitmapData(imgData['boom']));
+        self.addChild(self.bitmap);
+    }
+    //生成爆炸特效
+    function createBoom(boomObject,boomTime = 300){
+        var boom = new Boom();
+        boom.x = boomObject.x - boomObject.bitmap.getWidth()/2*1.5;
+        boom.y = boomObject.y - boomObject.bitmap.getHeight()*1.7;
+        startBattleLayer.addChild(boom);
+        setInterval(function(){
+            startBattleLayer.removeChild(boom);
+        },boomTime);
+    }
+    //获取组合键
+    var keyCodeArry = [];//组合键数组
+    function addKeyCodeArry(num,arr){
+        var check=0;
+        num = keyCodeToDisChar(num);
+        for (var i=0;i<arr.length;i++) {
+            if (arr[i]==num) {
+                check=1;
+            }
+        }
+        if (check==0) {
+            arr.push(num);
+        }
+        return arr;
+    }
+    function deletKeyCodeArry(num,arr){
+        num = keyCodeToDisChar(num);
+        for (var i=0;i<arr.length;i++) {
+            if (arr[i]==num) {
+                arr.splice(i,1);
+            }
+        }
+        return arr;
+    }
+
+    //键盘码转换成方向字符
+    // 75 k  74 j     72 h   76 l  Vim 模式的上下左右
+    function keyCodeToDisChar(keycode){
+        if(keycode == 75){
+            return "K";
+        }else if(keycode == 74){
+            return "J";
+        }else if(keycode == 72){
+            return "H";
+        }else if(keycode == 76){
+            return "L";
+        }
+    }
+
+    //-----------------设置敌人-----------------
+    //敌人类
+    function Enemy(){
+        base(this,LSprite,[]);
+        var self = this;    
+        self.runSpeed = enemyRunSpeed;
+        self.mode = "";
+        //获取图片
+        var bitmapData = new LBitmapData(imgData['enemy']);
+        var bitmap = new LBitmap(bitmapData);
+
+        self.bitmap = bitmap;
+        self.addChild(self.bitmap);
+    }
+    //敌人移动
+    Enemy.prototype.run = function(){
+        var self = this;
+        
+         //让敌人不断行走
+         var enemyRun = setInterval(function(){
+            self.x -= self.runSpeed;
+
+            //判断是否和英雄发生碰撞
+            if(self.isHit()){
+                heroHP-=1;
+                kills+=1;
+            }else if(self.x <= -(LGlobal.width + self.bitmap.getWidth())){//如果敌人超出屏幕范围后，销毁
+                // console.log("超出屏幕了");
+                enemyLayer.removeChild(self);
+                startBattleLayer.addChild(enemyLayer);
+                clearInterval(enemyRun);
+            }
+            if(heroHP<=0){ //当游戏结束的时候，终止敌人移动
+                clearInterval(enemyRun);
+            }
+        },1000/(self.runSpeed));
+    }
+    //检测敌人是否和英雄发生碰撞
+    Enemy.prototype.isHit = function(){
+        var self  = this;
+        //判断是否发生碰撞
+        var ishit = false;
+        if(enemyLayer.childList.length>0){
+           
+            enemyLayer.childList.forEach(enemy => {
+                if(LGlobal.hitTestRect(hero,enemy,
+                [hero.bitmap.getWidth(),hero.bitmap.getHeight()],
+                [enemy.bitmap.getWidth(),enemy.bitmap.getHeight()])){
+                    
+                    //发生爆炸
+                    createBoom(enemy);
+
+                    //删除敌人
+                    enemyLayer.removeChild(enemy);
+                    startBattleLayer.addChild(enemyLayer);
+                    
+                    ishit = true;
+                }
+            });
+        }
+        return ishit;
+    }
+    //添加敌人
+    function addEnemy(){
+        
+        //添加敌人
+        var enemy = new Enemy();        
+
+        //设置敌人初始位置
+        enemy.x = LGlobal.width ;
+        enemy.y = Math.random()*LGlobal.height;
+
+        //如果敌人的位置超过屏幕下边，让他重新随机在指定范围内出现。
+        // console.log(enemy.y);
+        if(enemy.y > LGlobal.height-enemy.bitmap.getHeight())
+        {
+            enemy.y = LGlobal.height-enemy.bitmap.getHeight()-Math.random()*(LGlobal.height/2);
+        }
+        enemyLayer.addChild(enemy);
+        startBattleLayer.addChild(enemyLayer);
+
+        enemy.run();
+    }
+    //-----------------计分板-----------------
+    //创建一个计分板
+    function createScorecard(){
+        //判断计分板里有没有内容，有的话就删掉，方便更新新的内容
+        if(scorecardLayer.childList.length>0)
+        {
+            scorecardLayer.childList.forEach(text => {
+                scorecardLayer.removeChild(text);
+            });
+        }
+        //设置文本属性
+        var textField = new LTextField();
+        textField.text = "HP："+heroHP+" 杀敌数："+kills;
+        textField.x = 10;
+        textField.y = 10;
+        
+        //添加文字到层
+        scorecardLayer.addChild(textField);
+        startBattleLayer.addChild(scorecardLayer);
+    }
+    //-----------------设置事件-----------------
+    //添加事件
+    function addEvent(){
+        startBattleLayer.addEventListener(LEvent.ENTER_FRAME,onRuning);
+        //设置用户键盘按下事件
+        LGlobal.stage.addEventListener(LKeyboardEvent.KEY_DOWN,keyDown);
+        LGlobal.stage.addEventListener(LKeyboardEvent.KEY_UP,keyUp);
+        // LGlobal.stage.addEventListener(LKeyboardEvent.KEY_PRESS,keyPress);
+    }
+    
+    //游戏运行时,不断调用
+    function onRuning(){
+       //英雄的移动实时运行
+        hero.run();
+        
+       //生成敌人
+       if(enemyShowIndex++ > enemyShowTime){
+            enemyShowIndex = 0;
+            addEnemy();
+       }
+       //设置计分板
+       createScorecard();
+       
+       //英雄血量低于0的时候 游戏结束
+       if(heroHP <= 0){
+            gameOver();
+       }
+    }
+
+    function keyDown(e){
+        controlHeroKeyDownEvent(e);
+    }
+    function keyUp(e){
+        controlHeroKeyUpEvent(e);
+    }
+    // function keyPress(e){
+
+    // }
+    //-----------------游戏结束-----------------
+    function gameOver(){
+        //定义层
+        gameOverLayer = new LSprite();
+        //获取游戏结束背景图片
+        var bitmapData = new LBitmapData(imgData['gameOver']);
+        var bitmap = new LBitmap(bitmapData);
+        
+
+        //游戏结束文字
+        var bitmapDataText = new LBitmapData(imgData['gameOverText']);
+        var bitmapText = new LBitmap(bitmapDataText);
+        var gameOverTextLayer = new LSprite();
+        gameOverTextLayer.addChild(bitmapText);
+        //设置文字图片位置
+        gameOverTextLayer.x = LGlobal.width/2 - bitmapText.getWidth()/2;
+        gameOverTextLayer.y = LGlobal.height/2 - bitmapText.getHeight()/2;
+
+        //把图添加到层上
+        gameOverLayer.addChild(bitmap);
+        gameOverLayer.addChild(gameOverTextLayer);
+        addChild(gameOverLayer);
+
+        //设置背景层位置
+        gameOverLayer.y = -LGlobal.height;
+        
+        //停止游戏里所有物体的动作
+        startBattleLayer.die();
+        
+        //让游戏结束的画面慢慢滑动下来
+        var gameOverDown = setInterval(function(){
+            gameOverLayer.y += 10;
+            if(gameOverLayer.y >= 0){
+                
+                clearInterval(gameOverDown);
+
+                //删除开始战斗层
+                removeChild(startBattleLayer);
+
+                //添加跳转画面事件
+                gameOverLayer.addEventListener(LMouseEvent.MOUSE_DOWN,function(){
+                    initGameData();
+                    main();
+                });
+            }
+        },50);
+    }
+
+    
+</script>
