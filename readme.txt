@@ -1,1 +1,1 @@
-Some projects and cases that I have done myself.
+Some projects and cases that I have done myself. 
