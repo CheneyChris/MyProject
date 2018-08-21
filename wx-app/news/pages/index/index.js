@@ -79,6 +79,7 @@ Page({
         });
 
         //通过ajax请求日报数据
+        // http://news-at.zhihu.com/api/4/themes 
         util.AJAX('themes', function(res) {
             var arr = res.data.others;
             that.setData({
