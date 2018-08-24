@@ -21,7 +21,7 @@
         <swiper class='swiper-boxs' indicator-dots autoplay duration="300">
           <swiper-item wx:for="{{topStories}}">
             <navigator url="../detail/detail?detail_id={{item.id}}">
-                <image class='swiper-boxs-img' mode="aspectFill" src="{{item.image}}"></image>
+                <image class='swiper-boxs-img' mode="aspectFill" src="{{item.image}}"></image> 
             </navigator>
           </swiper-item>
         </swiper>
