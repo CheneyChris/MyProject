@@ -9,3 +9,4 @@ Option + W  ------  关闭当前页面
 
 Command + Shift + C  ----- 复制当前页面路径
 
+Exit insert Mode  --------- vim 插件配置中，设置进入正常模式（退出输入模式esc键）
