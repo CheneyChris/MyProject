@@ -25,7 +25,7 @@ module.exports.noticeList = function (req, res, next) {
 		var sqldata = [
 			'notice_id ,notice_title,notice_time,u.user_name,c.class_name',
 			'student_notice as n inner join student_user as u on n.user_id = u.user_id inner join student_class as c on c.class_id = n.class_id'
-		]
+		];
 		base.showListOfSql(req, res, menuCtrl, 'notice', 'n', sqldata, where);
 	}, reject => {
 		res.end(`<script>alert('没有权限');history.go(-1);</script>`);
@@ -56,7 +56,7 @@ module.exports.noticeAdd = function (req, res) {
 						classList
 					},
 					res
-				}
+				};
 				base.assign(obj);
 			});
 		});
@@ -131,7 +131,7 @@ module.exports.noticeEdit = function (req, res) {
 							userList, 		// 所有老师
 						},
 						res
-					}
+					};
 					base.assign(obj);
 				});
 			});
@@ -158,7 +158,7 @@ module.exports.noticeEditData = function (req, res) {
 				"notice_time": Date.parse(req.body.notice_time) / 1000,
 				"class_id": req.body.class_id,
 				"user_id": req.body.user_id,
-			}
+			};
 			db.table("notice").where(where).update(data).then(affectRow => {
 				if (affectRow) {
 					res.redirect("/notice/notice_list");
@@ -196,4 +196,4 @@ module.exports.noticeDeleteAll = function (req, res) {
 	});
 
 
-}
+};

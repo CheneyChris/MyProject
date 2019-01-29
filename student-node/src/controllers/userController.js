@@ -46,7 +46,7 @@ module.exports.userAdd = function (req, res) {
 					usertypeList
 				},
 				res
-			}
+			};
 			base.assign(obj);
 		});
 	}, reject => {
@@ -68,7 +68,7 @@ module.exports.userAddData = function (req, res) {
 		"user_time": req.body.user_time,
 		"usertype_id": req.body.usertype_id,
 		"is_show": 1
-	}
+	};
 
 	if (req.files.user_img.size > 0) {
 		data.user_img = req.files.user_img.name
@@ -100,7 +100,7 @@ module.exports.userEdit = function (req, res) {
 			table: "class",
 			join: "left",
 			on: ['user_id', 'user_id']
-		}
+		};
 
 		db.table("user").where(`user_id=${user_id}`).find().then(userInfo => {
 
@@ -120,7 +120,7 @@ module.exports.userEdit = function (req, res) {
 							userInfo
 						},
 						res
-					}
+					};
 					base.assign(obj);
 				});
 
@@ -164,7 +164,7 @@ module.exports.userEditData = function (req, res) {
 		"user_sex": req.body.user_sex,
 		"user_phone": req.body.user_phone,
 		"user_time": Date.parse(req.body.user_time) / 1000,
-	}
+	};
 	if (req.files.user_img.size > 0) {
 		data.user_img = path.basename(user_img.path);
 	} else {
@@ -200,5 +200,5 @@ module.exports.userDeleteAll = function (req, res) {
 		res.end(`<script>alert('没有权限');history.go(-1);</script>`);
 	});
 
-}
+};
 

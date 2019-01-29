@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 //已废弃的，该思路不通：xtmpl模板的渲染方式是一个页面只能有一个模板
 
 const express = require('express');

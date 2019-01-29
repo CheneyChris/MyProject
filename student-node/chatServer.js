@@ -82,7 +82,7 @@ function chatInit(app) {
         client.on('join', function (user) {
 
             client.clientobj = user;
-            client.mysocket = {}
+            client.mysocket = {};
             client.mysocket[`${user.id}`] = client.id;
             //添加到群聊组
             group.push(client);
@@ -125,7 +125,7 @@ function chatInit(app) {
         client.on('pri_join', function (self, targetid) {
             //保存私聊用户
             client.clientobj = self;
-            client.mysocket = {}
+            client.mysocket = {};
             client.mysocket[`${self.id}`] = client.id;
 
             // //判断私聊组的用户是否已经存在
@@ -158,7 +158,7 @@ function chatInit(app) {
                         "other_id":targetid,
                         "chat_content":msg,
                         "chat_time":chattime
-                    }
+                    };
                     db.table("chat").add(data).then(function(effectrows){
                         console.log("插入数据库是否成功：",effectrows);
                     }).catch(err=>{
@@ -224,4 +224,4 @@ function chatInit(app) {
 }
 
 
-module.exports = chatInit
+module.exports = chatInit;

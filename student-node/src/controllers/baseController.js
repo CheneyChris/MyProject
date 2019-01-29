@@ -71,7 +71,6 @@ module.exports.signupEmail = function (obj, callback) {
 	transporter.sendMail(mailOptions, function (error, info) {
 		callback(error, info);
 	});
-
 };
 
 //分页初始化
@@ -136,7 +135,7 @@ function showList(req, res, menuCtrl, table, join = {}, whereobj = {}) {
 	initPage(table, function (start, limit, page, totalPage, totalPageArray) {
 		//获取数据
 		let appwhere = null;
-		if (JSON.stringify(whereobj) != "{}") {
+		if (JSON.stringify(whereobj) !== "{}") {
 
 			if (whereobj.value === null) {
 				appwhere = `student_${table}.is_show=1`;
@@ -364,7 +363,7 @@ function deleteALl(res, ids, table, where_id, router) {
 			}).catch(err => {
 				if (err) throw err;
 			});
-		})
+		});
 		res.redirect(`${router}`);
 		return false;
 
@@ -434,11 +433,11 @@ function is_action(req, res, role_id = 3) {
 	return promise;
 }
 
-module.exports.showList = showList
-module.exports.showListOfSql = showListOfSql
-module.exports.tableShowEdit = tableShowEdit
-module.exports.tableEditSubmit = tableEditSubmit
-module.exports.getUserOfType = getUserOfType
-module.exports.deleteALl = deleteALl
-module.exports.deleteOne = deleteOne
-module.exports.is_action = is_action
+module.exports.showList = showList;
+module.exports.showListOfSql = showListOfSql;
+module.exports.tableShowEdit = tableShowEdit;
+module.exports.tableEditSubmit = tableEditSubmit;
+module.exports.getUserOfType = getUserOfType;
+module.exports.deleteALl = deleteALl;
+module.exports.deleteOne = deleteOne;
+module.exports.is_action = is_action;

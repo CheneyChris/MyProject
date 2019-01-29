@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 const fs = require('fs');
 const path = require('path');
@@ -22,4 +22,4 @@ module.exports.index = function(req,res)
         res.setHeader("Content-Type","text/html;charset=utf-8");
         res.end(data);
     });
-}
+};

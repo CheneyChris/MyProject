@@ -17,7 +17,7 @@ module.exports.stucurrList = function (req, res, next) {
     var sqldata = [
         'stucurr_id ,stucurr_time,u.user_name,c.curriculum_name',
         'student_stucurr as s inner join student_user as u on s.user_id = u.user_id inner join student_curriculum as c on c.curriculum_id = s.curriculum_id'
-    ]   
+    ];
     base.showListOfSql(req, res, menuCtrl, 'stucurr','s',sqldata);
 };
 //获取全部老师数据
@@ -38,7 +38,7 @@ module.exports.stucurrAdd = function (req, res) {
                 result_list: result
             },
             res
-        }
+        };
         base.assign(obj);
     });
 };
@@ -206,8 +206,8 @@ module.exports.stucurrDelete = function (req, res) {
     stucurr_ids = stucurr_ids.join(","); //数组转换字符串
 
     //判断是批量删除还是单个删除
-    var where = stucurr_ids != 0 ? `stucurr_id in (${stucurr_ids}) and usertype_id = 1` : `stucurr_id = ${stucurr_id} and usertype_id = 1`
-    var delstucurrWhere = stucurr_ids != 0 ? `stucurr_id in (${stucurr_ids})` : `stucurr_id = ${stucurr_id}`
+    var where = stucurr_ids != 0 ? `stucurr_id in (${stucurr_ids}) and usertype_id = 1` : `stucurr_id = ${stucurr_id} and usertype_id = 1`;
+    var delstucurrWhere = stucurr_ids != 0 ? `stucurr_id in (${stucurr_ids})` : `stucurr_id = ${stucurr_id}`;
 
     //拿到指定班级的所有学生信息
     db.table('userofstucurr').join({

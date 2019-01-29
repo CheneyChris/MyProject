@@ -327,7 +327,7 @@
             } else {
                 let msgel = $(
                     `<li name="msgremind" targetuserid = ${targetUser.id} targetusername=${targetUser.name} onclick="agreePri(this)"><span><a class="msgremind" href="javascript:;" >${targetUser.name}发来消息~</a></span></li>`
-                )
+                );
                 $(`#firends_container`).prepend(msgel);
                 $("li[name=msgremind]").children("span").addClass("remindAdnimation");
             }
@@ -340,7 +340,7 @@
         //切换标签窗口
         let chatTab = $(
             `<li name="priuserTab" class="overflow chatTabStyle" onclick="activateTab(this)" data-priObj="${targetuserid}" class="overflow">${targetusername}</li>`
-        )
+        );
         $("#chatTab").append(chatTab);
         activateTab(chatTab);
         let tabChatContent = $(
@@ -359,7 +359,7 @@
             if ($(this).attr("data-priObj") == targetid) {
                 ispring = true;
             }
-        })
+        });
         return ispring;
     }
 
@@ -384,7 +384,7 @@
 
         if (isPring(targetuserid)) {
             alert("你们已经在聊天了");
-            return;
+
         } else {
             createTabAndWindow(self, targetuserid, targetusername);
             
@@ -418,7 +418,7 @@
     //清空在线用户列表
     var removeFirend = function () {
         $(`#firends_container`).html("");
-    }
+    };
     //添加在线用户
     var addInlineUser = function (inlineUser) {
         if (inlineUser.id == loginuser.id) return;
@@ -427,7 +427,7 @@
         li.innerHTML =
             `<a href="javascript:;" class="msgremind" targetuserid="${inlineUser.id}" targetusername="${inlineUser.name}" onclick="startPri(this)" >${inlineUser.name}</a>`;
         document.getElementById("firends_container").appendChild(li);
-    }
+    };
 
     //客户端发消息
     var sendMsg = function () {

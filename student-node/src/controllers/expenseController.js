@@ -18,7 +18,7 @@ module.exports.expenseList = function (req, res, next) {
         "user": {
             on: [`user_id`, `user_id`]
         }
-    }
+    };
     base.showList(req, res, menuCtrl, 'expense', join);
 };
 //获取全部老师数据
@@ -39,7 +39,7 @@ module.exports.expenseAdd = function (req, res) {
                 result_list: result
             },
             res
-        }
+        };
         base.assign(obj);
     });
 };
@@ -213,4 +213,4 @@ module.exports.expenseDeleteAll = function (req, res) {
     let expense_id = req.body.expense_id;
     base.deleteALl(res, expense_id, "expense", "expense_id", "/expense/expense_list");
 
-}
+};

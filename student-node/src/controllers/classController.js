@@ -5,7 +5,6 @@ const path = require('path');
 const xtpl = require('xtpl');
 const moment = require('moment');
 const fs = require("fs");
-
 const db = require(path.join(__dirname, "../configs/database.js"));
 
 const base = require(path.join(__dirname, "./baseController.js"));
@@ -18,13 +17,13 @@ module.exports.classList = function (req, res, next) {
 	let obj = {
 		name: "class_name",
 		value: text
-	}
+	};
 	let join = {
 		"user": {
 			join: 'inner',
 			on: [`user_id`, `user_id`]
 		}
-	}
+	};
 	base.showList(req, res, menuCtrl, 'class', join, obj);
 };
 
@@ -41,7 +40,6 @@ function getAllTeachar(func) {
 //班级添加界面
 module.exports.classAdd = function (req, res) {
 
-
 	base.is_action(req, res, req.session.admin.role_id).then(resolve => {
 
 		getAllTeachar(function (result) {
@@ -51,7 +49,7 @@ module.exports.classAdd = function (req, res) {
 					result_list: result
 				},
 				res
-			}
+			};
 			base.assign(obj);
 		});
 
@@ -69,7 +67,7 @@ module.exports.classAddData = function (req, res) {
 		"class_name": req.body.class_name,
 		"class_time": Date.parse(req.body.class_time) / 1000,
 		"user_id": req.body.user_id,
-	}
+	};
 	db.table("class").getField("class_name").then(class_name_arr => {
 		let result = class_name_arr.indexOf(data.class_name);
 		if (result !== -1) {
@@ -134,7 +132,7 @@ module.exports.classEdit = function (req, res) {
 			table: "user",
 			join: "left",
 			on: ['user_id', 'user_id']
-		}
+		};
 		db.table("class").join(join).where(`class_id = ${class_id}`).find().then(classInfo => {
 			//  查询班主任
 
@@ -149,7 +147,7 @@ module.exports.classEdit = function (req, res) {
 						classTeacher,
 					},
 					res
-				}
+				};
 				base.assign(obj);
 			});
 
@@ -171,7 +169,7 @@ module.exports.classEditData = function (req, res) {
 		"class_name": req.body.class_name,
 		"class_time": Date.parse(req.body.class_time) / 1000,
 		"user_id": req.body.user_id,
-	}
+	};
 	db.table("class").where(`class_id=${class_id}`).update(data).then(affectRows => {
 		base.showMsg(res, "修改成功", "/class/class_list");
 	}).catch(err => {
@@ -340,7 +338,7 @@ module.exports.classDeleteAll = function (req, res) {
 	}, reject => {
 		res.end(`<script>alert('没有权限');history.go(-1);</script>`);
 	});
-}
+};
 
 
 

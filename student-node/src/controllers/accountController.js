@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 /*
 * 处理账号相关的业务逻辑
@@ -97,7 +97,7 @@ exports.register = function (req, res) {
                 admin_name: admin_name,
                 admin_pwd: admin_pwd,
                 admin_time: Date.now()
-            }
+            };
 
             db.table('admin').add(params).then(function (insertId) {
                 if (!insertId) {
@@ -116,7 +116,7 @@ module.exports.accountList = function (req, res) {
     var sqldata = [
         'account_id ,account_account,r.role_name,u.user_name',
         'student_account as a inner join student_user as u on a.user_id = u.user_id inner join student_role as r on r.role_id = a.role_id '
-    ]
+    ];
     base.showListOfSql(req, res, menuCtrl, 'account', sqldata);
 
 };

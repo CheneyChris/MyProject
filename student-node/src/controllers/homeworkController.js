@@ -24,7 +24,7 @@ module.exports.homeworkList = function (req, res, next) {
 		var sqldata = [
 			'homework_id ,homework_name,homework_time,u.user_name,c.class_name',
 			'student_homework as h inner join student_user as u on h.user_id = u.user_id inner join student_class as c on c.class_id = h.class_id'
-		]
+		];
 		base.showListOfSql(req, res, menuCtrl, 'homework', 'h', sqldata, where);
 
 	}, reject => {
@@ -58,7 +58,7 @@ module.exports.homeworkAdd = function (req, res) {
 						userList: userList,		// 所有老师
 					},
 					res
-				}
+				};
 				base.assign(obj);
 			}).catch(err => {
 				if (err) throw err;
@@ -83,7 +83,7 @@ module.exports.homeworkAddData = function (req, res) {
 		"homework_time": Date.parse(req.body.homework_time) / 1000,
 		"class_id": req.body.class_id,
 		"user_id": req.body.user_id,
-	}
+	};
 	db.table("homework").add(data)
 		.then(() => {
 			res.redirect("/homework/homework_list");
@@ -116,7 +116,7 @@ module.exports.homeworkEdit = function (req, res) {
 							homework: homework		//	 作业信息
 						},
 						res
-					}
+					};
 					base.assign(obj);
 				}).catch(err => {
 					if (err) throw err;
@@ -150,7 +150,7 @@ module.exports.homeworkEditData = function (req, res) {
 				"homework_time": Date.parse(req.body.homework_time) / 1000,
 				"class_id": req.body.class_id,
 				"user_id": req.body.user_id,
-			}
+			};
 			db.table("homework").where(`homework_id=${homework_id} AND is_show=1`).update(data)
 				.then(() => {
 					res.redirect("/homework/homework_list");
@@ -195,4 +195,4 @@ module.exports.homeworkDeleteAll = function (req, res) {
 	});
 
 
-}
+};

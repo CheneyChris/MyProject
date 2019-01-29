@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 const path = require("path");
 const db = require(path.join(__dirname, '../configs/database.js'));
 const xtpl = require('xtpl');
@@ -88,4 +88,4 @@ function initMenu(req, getMenuData) {
 	}
 }
 
-module.exports = initMenu
+module.exports = initMenu;

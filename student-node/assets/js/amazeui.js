@@ -13524,7 +13524,7 @@
 
             var length = this.rsBlock.length / 3;
 
-            var rsBlocks = new Array();
+            var rsBlocks = [];
 
             for (var i = 0; i < length; i++) {
 
@@ -14368,7 +14368,7 @@
         //---------------------------------------------------------------------
 
         function QRBitBuffer() {
-          this.buffer = new Array();
+          this.buffer = [];
           this.length = 0;
         }
 
@@ -14717,7 +14717,7 @@
 
             var length = this.rsBlock.length / 3;
 
-            var rsBlocks = new Array();
+            var rsBlocks = [];
 
             for (var i = 0; i < length; i++) {
 
@@ -15561,7 +15561,7 @@
         //---------------------------------------------------------------------
 
         function QRBitBuffer() {
-          this.buffer = new Array();
+          this.buffer = [];
           this.length = 0;
         }
 

@@ -17,7 +17,7 @@ module.exports.curriculumList = function (req, res, next) {
 	let obj = {
 		name: "curriculum_name",
 		value: text
-	}
+	};
 	console.log(text);
 
 	base.showList(req, res, menuCtrl, 'curriculum', {}, obj);
@@ -41,7 +41,7 @@ module.exports.curriculumAdd = function (req, res) {
 			template: path.join(__dirname, "../views/admin/curriculum/curriculum_add.html"),
 			data: {},
 			res
-		}
+		};
 		base.assign(obj);
 	}, reject => {
 		res.end(`<script>alert('没有权限');history.go(-1);</script>`);
@@ -60,7 +60,7 @@ module.exports.curriculumAddData = function (req, res) {
 				"curriculum_name": req.body.curriculum_name,
 				"curriculum_price": parseInt(req.body.curriculum_price),
 				"is_show": 1
-			}
+			};
 			db.table("curriculum").add(data).then(affectRow => {
 				res.redirect("/curriculum/curriculum_list");
 			}).catch(err => {
@@ -87,7 +87,7 @@ module.exports.curriculumEdit = function (req, res) {
 					curriculumInfo
 				},
 				res
-			}
+			};
 			base.assign(obj);
 
 		}).catch(err => {
@@ -108,7 +108,7 @@ module.exports.curriculumEditData = function (req, res) {
 		"curriculum_name": req.body.curriculum_name,
 		"curriculum_price": parseInt(req.body.curriculum_price),
 		"is_show": 1
-	}
+	};
 	db.table("curriculum").where(`curriculum_id=${curriculum_id}`).update(data).then(affectRow => {
 		res.redirect("/curriculum/curriculum_list");
 	}).catch(err => {
@@ -141,4 +141,4 @@ module.exports.curriculumDeleteAll = function (req, res) {
 	});
 
 
-}
+};

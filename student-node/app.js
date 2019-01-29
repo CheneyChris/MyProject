@@ -16,7 +16,6 @@ app.use(mutipart({ uploadDir: "./assets/uploads" }));
 //设置静态资源目录
 app.use(express.static(path.join(__dirname, "/assets")));
 
-
 //使用session中间件
 app.use(session({ secret: 'H1801', cookie: { maxAge: null }, rolling: true, resave: false, saveUninitialized: true }));
 
@@ -28,7 +27,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 //引入路由 并启动
-var Router = require("./src/routers/index");
+const Router = require("./src/routers/index");
 
 //给应用设置路由
 Router(app);
@@ -38,7 +37,7 @@ chatServer(app);
 
 //设置端口
 app.listen(3000, function () {
-	console.log('服务已开启');
+	console.log('服务已开启, localhost:3000');
 
 	//给应用设置路由
 	// location.reload();

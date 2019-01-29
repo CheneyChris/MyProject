@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 /*
  * 处理账号相关的业务逻辑
@@ -19,7 +19,7 @@ function test(req, res) {
         id: name,
         name: "小明" + name,
         img: "/uploads/5GsJDFnlect_vJh_dU3Yh2FN.png"
-    }
+    };
     let jsonstr = JSON.stringify(loginuser);
 
     res.cookie("loginUser", jsonstr, {
@@ -90,4 +90,4 @@ function groupChat(req, res) {
     // module.exports.priveteChat = priveteChat
 }
 
-module.exports.groupChat = groupChat
+module.exports.groupChat = groupChat;

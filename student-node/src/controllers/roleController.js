@@ -42,7 +42,7 @@ module.exports.roleAdd = function (req, res) {
 				result_list: result
 			},
 			res
-		}
+		};
 		base.assign(obj);
 	});
 };
@@ -82,7 +82,7 @@ module.exports.roleEdit = function (req, res) {
 					parent
 				},
 				res
-			}
+			};
 			base.assign(obj);
 		});
 	}, reject => {
@@ -118,7 +118,7 @@ module.exports.roleEditData = function (req, res) {
 			}).catch(err => {
 				if (err) throw err;
 			})
-		})
+		});
 		base.showMsg(res, "编辑权限成功", "/role/role_list");
 
 	} else if (typeof access_id === "string") {

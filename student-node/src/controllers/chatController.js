@@ -17,7 +17,7 @@ module.exports.chatList = function (req, res, next) {
     var sqldata = [
         'u.user_name as user_name,f.user_name as firend_name,c.chat_id,c.other_id,c.chat_time',
         'student_user as u inner join student_chat as c on u.user_id = c.user_id inner join student_user as f on c.other_id = f.user_id'
-    ]   
+    ];
     base.showListOfSql(req, res, menuCtrl, 'chat','c',sqldata);
 };
 //获取全部老师数据
@@ -38,7 +38,7 @@ module.exports.chatAdd = function (req, res) {
                 result_list: result
             },
             res
-        }
+        };
         base.assign(obj);
     });
 };
@@ -161,8 +161,8 @@ module.exports.chatDelete = function (req, res) {
     chat_ids = chat_ids.join(","); //数组转换字符串
 
     //判断是批量删除还是单个删除
-    var where = chat_ids != 0 ? `chat_id in (${chat_ids}) and usertype_id = 1` : `chat_id = ${chat_id} and usertype_id = 1`
-    var delchatWhere = chat_ids != 0 ? `chat_id in (${chat_ids})` : `chat_id = ${chat_id}`
+    var where = chat_ids != 0 ? `chat_id in (${chat_ids}) and usertype_id = 1` : `chat_id = ${chat_id} and usertype_id = 1`;
+    var delchatWhere = chat_ids != 0 ? `chat_id in (${chat_ids})` : `chat_id = ${chat_id}`;
 
     //拿到指定的所有学生信息
     db.table('userofchat').join({

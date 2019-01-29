@@ -24,11 +24,10 @@ module.exports.signin = function (req, res) {
 	base.assign(data);
 };
 
-
 //登录数据处理
 module.exports.signinData = function (req, res) {
 	// console.log("进来控制器提交");
-	if (req.session.vcode != req.body.vcode) {
+	if (req.session.vcode !== Number.parseInt(req.body.vcode)) {
 		base.showMsg(res, '验证码不正确', '/main/signin');
 		return false;
 	}
@@ -42,7 +41,7 @@ module.exports.signinData = function (req, res) {
 
 	db.table(sqltable).where(where).find().then(function (data) { //判断用户输入的账号是否正确以及一系列的业务逻辑操作
 
-		if (JSON.stringify(data) == "{}") {
+		if (JSON.stringify(data) === "{}") {
 			base.showMsg(res, '账号密码错误', '/main/signin');
 			return false;
 		} else {
@@ -50,20 +49,16 @@ module.exports.signinData = function (req, res) {
 			global.role_id = req.session.admin.role_id;
 			if (req.body.auto)   //如果你选中自动登录，我就把你的信息保存在你那边，方便你下次自动登录
 			{
-				res.cookie('auto', req.body.auto, { maxAge: 600000, httpOnly: true, 'signed': false });
-				res.cookie('admin_id', data.account_id, { maxAge: 600000, httpOnly: true, 'signed': false });
+				res.cookie('auto', req.body.auto, {maxAge: 600000, httpOnly: true, 'signed': false});
+				res.cookie('admin_id', data.account_id, {maxAge: 600000, httpOnly: true, 'signed': false});
 			}
 			base.showMsg(res, '登录成功', '/class/class_list');
 			return false;
-
-			// if (data.role_id === 3) { // 管理员
-			// } else if (data.role_id === 2) {      // 老师
-			// } else if (data.role_id === 1) {    //学生
-			// }
 		}
 	}).catch(function (err) {  //如果数据库意外中断或者发生其他错误
 		if (err) {
-			base.showMsg(res, err, '/main/signin');
+			console.log(err);
+			base.showMsg(res, err + '凉凉', '/main/signin');
 			return false;
 		}
 	});
@@ -75,9 +70,9 @@ module.exports.showHome = function (req, res) {
 		template: path.join(__dirname, "../views/admin/layout.html"),
 		data: {},
 		res
-	}
+	};
 	base.assign(data);
-}
+};
 
 //获取验证码并返回图片
 module.exports.getVcodeImage = function (req, res) {
@@ -129,12 +124,12 @@ module.exports.sendEmail = function (req, res) {
 
 	base.signupEmail(data, function (err, info) {
 		if (err) {
-			var result = { send: false };
+			var result = {send: false};
 			res.json(result);
 			return false;
 		} else {
 			req.session.email_code = email_code;
-			var result = { send: true };
+			var result = {send: true};
 			res.json(result);
 			return false;
 		}

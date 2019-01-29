@@ -21,12 +21,8 @@ mainRouter.post('/signin',mainCtrl.signinData);
 //退出
 mainRouter.get('/signout',mainCtrl.signout);
 
-
 //验证码
 mainRouter.get('/vcode',mainCtrl.getVcodeImage);
-
-
-
 
 //注册
 mainRouter.get('/signup',mainCtrl.signup);

@@ -51,11 +51,11 @@ function test(app) {
 function golive(app) {
 	app.get("*", function (req, res, next) {
 		console.log("当前路由地址：", req.url);
-		if (req.url == "/main/signin" || req.url == "/main/siginup" || req.url == "/main/vcode") {
-			if (req.cookies.auto != undefined && req.cookies.admin_id != undefined) {
+		if (req.url === "/main/signin" || req.url === "/main/siginup" || req.url === "/main/vcode") {
+			if (req.cookies.auto !== undefined && req.cookies.admin_id !== undefined) {
 				var where = `admin_id = ${req.cookies.admin_id}`;
 				db.table('admin').where(where).find().then(function (data) {
-					if (JSON.stringify(data) == "{}") {
+					if (JSON.stringify(data) === "{}") {
 						res.cookie('auto', undefined);
 						res.cookie('admin_id', undefined);
 						next();
@@ -76,7 +76,7 @@ function golive(app) {
 			}
 		} else {
 			console.log("当前登录用户：",req.session.admin);
-			if (req.session.admin == undefined) {
+			if (req.session.admin === undefined) {
 				req.session.admin = null;
 				res.redirect('/main/signin');
 				return false;
@@ -109,7 +109,7 @@ function useRouter(app) {
 	app.use('/chatServer', chatServerRouter);
 }
 //设置网站路由
-var Router = function (app) {
+const Router = function (app) {
 
 	//测试版
 	// test(app);

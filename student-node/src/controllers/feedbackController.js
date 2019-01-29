@@ -25,7 +25,7 @@ module.exports.feedbackList = function (req, res, next) {
 		let sqldata = [
 			'f.feedback_id ,feedback_name,feedback_time,u.user_name,c.class_name,t.user_name as teachar_name',
 			'student_feedback as f inner join student_user as u on f.user_id = u.user_id inner join student_class as c on c.class_id = f.class_id inner join student_user as t on t.user_id = f.teachar_id'
-		]
+		];
 		base.showListOfSql(req, res, menuCtrl, 'feedback', 'f', sqldata, where);
 	}, reject => {
 		res.end(`<script>alert('没有权限');history.go(-1);</script>`);
@@ -64,7 +64,7 @@ module.exports.feedbackAdd = function (req, res) {
 							studentList,		        // 所有学生
 						},
 						res
-					}
+					};
 					base.assign(obj);
 				})
 			})
@@ -88,7 +88,7 @@ module.exports.feedbackAddData = function (req, res) {
 		"teachar_id": parseInt(req.body.teachar_id),
 		"user_id": req.body.user_id || 1,    // 需要用户登录
 		"is_show": 1
-	}
+	};
 	db.table("feedback").add(data).then(affectRow => {
 		// console.log(affectRow);
 		res.redirect("/feedback/feedback_list");
@@ -126,7 +126,7 @@ module.exports.feedbackEdit = function (req, res) {
 								studentList,		        // 所有学生
 							},
 							res
-						}
+						};
 						base.assign(obj);
 					})
 				})
@@ -156,7 +156,7 @@ module.exports.feedbackEditData = function (req, res) {
 				"class_id": req.body.class_id,
 				"teachar_id": req.body.teachar_id,
 				"user_id": req.body.user_id,    // 需要用户登录
-			}
+			};
 			db.table("feedback").where(where).update(data).then(affectRow => {
 				res.redirect("/feedback/feedback_list");
 			});
@@ -191,4 +191,4 @@ module.exports.feedbackDeleteAll = function (req, res) {
 	});
 
 
-}
+};
